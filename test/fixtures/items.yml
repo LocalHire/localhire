@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  instructions: MyText
+  price_per_hour: 1
+  min_hours_per_hire: 1
+  price_per_day: 1
+  max_days_per_hire: 1
+  price_per_week: 1
+  max_weeks_per_hire: 1
+
+two:
+  name: MyString
+  description: MyText
+  instructions: MyText
+  price_per_hour: 1
+  min_hours_per_hire: 1
+  price_per_day: 1
+  max_days_per_hire: 1
+  price_per_week: 1
+  max_weeks_per_hire: 1

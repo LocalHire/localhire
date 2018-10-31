@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Instructions</th>
+      <th>Price per hour</th>
+      <th>Min hours per hire</th>
+      <th>Price per day</th>
+      <th>Max days per hire</th>
+      <th>Price per week</th>
+      <th>Max weeks per hire</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.description %></td>
+        <td><%= item.instructions %></td>
+        <td><%= item.price_per_hour %></td>
+        <td><%= item.min_hours_per_hire %></td>
+        <td><%= item.price_per_day %></td>
+        <td><%= item.max_days_per_hire %></td>
+        <td><%= item.price_per_week %></td>
+        <td><%= item.max_weeks_per_hire %></td>
+        <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item', new_item_path %>
