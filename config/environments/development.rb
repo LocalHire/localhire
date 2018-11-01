@@ -70,4 +70,4 @@ config.action_mailer.delivery_method = :smtp
   password:             ENV['MAILER_PASSWORD'],
   authentication:       'plain',
   enable_starttls_auto: true }
-end
+  end
