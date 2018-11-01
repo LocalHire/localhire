@@ -5,7 +5,9 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.all
-    LocalhireMailer.with(user: current_user).new_booking.deliver_now
+    if user_signed_in?
+      LocalhireMailer.with(user: current_user).new_booking.deliver_now
+    end
   end
 
   # GET /items/1
@@ -15,6 +17,7 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
+    authenticate_user!
     @item = Item.new
   end
 
