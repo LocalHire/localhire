@@ -45,5 +45,11 @@
   <%= @item.max_weeks_per_hire %>
 </p>
 
+<p>
+  <%(0...@item.images.count).each do |image|%>
+    <%=image_tag @item.images[image], width: '200', height: '200'%>
+  <%end%>
+</p>
+
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
