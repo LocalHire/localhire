@@ -25,22 +25,17 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    authorize @item
   end
 
   # POST /items
   # POST /items.json
   def create
     @item = Item.new(item_params)
-
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
+    @item.lender_id = current_user.lender.id
+    @item.user_id = current_user.id
+    @item.save
+    redirect_to item_path(@item)
   end
 
   # PATCH/PUT /items/1
@@ -60,6 +55,7 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    authorize @item
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
@@ -75,6 +71,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :description, :instructions, :price_per_hour, :min_hours_per_hire, :price_per_day, :max_days_per_hire, :price_per_week, :max_weeks_per_hire, images: [])
+      params.require(:item).permit(:name, :description, :instructions, :price_per_hour, :max_hours_per_hire, :price_per_day, :max_days_per_hire, :price_per_week, :max_weeks_per_hire, :users_id, :lender_id, images: [])
     end
 end
