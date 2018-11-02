@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
  
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  # before_action :availability, only: [:show]
 
   # GET /items
   # GET /items.json
@@ -25,6 +26,22 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+
+    @availability = []
+
+    if @item.per_hour_availability == '1'
+      @availability << [:price_per_hour, :max_hours_per_hire]
+    end
+
+    if @item.per_day_availability == '1'
+      @availability << [:price_per_day, :max_days_per_hire]
+    end
+
+    if @item.per_week_availability == '1'
+      @availability << [:price_per_week, :max_weeks_per_hire]
+    end
+  
+
   end
 
   # POST /items
@@ -34,7 +51,9 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+
+        format.html { redirect_to edit_item_path(@item), notice: 'Item was successfully created.' }
+        # format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -75,6 +94,9 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :description, :instructions, :price_per_hour, :max_hours_per_hire, :price_per_day, :max_days_per_hire, :price_per_week, :max_weeks_per_hire, images: [])
+      params.require(:item).permit(:name, :description, :instructions, 
+        :price_per_hour, :price_per_day, :price_per_week,  
+        :max_hours_per_hire, :max_days_per_hire, :max_weeks_per_hire,
+        :per_hour_availability, :per_day_availability, :per_week_availability)
     end
 end

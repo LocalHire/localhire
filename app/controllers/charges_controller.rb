@@ -5,7 +5,7 @@ class ChargesController < ApplicationController
 
     def create
 
-        raise
+        # raise
         @amount = params[:amount]
 
 
