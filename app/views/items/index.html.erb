@@ -1,8 +1,14 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<h1>Items</h1>
+  <div class="row">
 
-<table>
+    <p id="notice"><%= notice %></p>
+
+    
+
+
+
+<%# <table>
   <thead>
     <tr>
       <th>Name</th>
@@ -16,10 +22,35 @@
       <th>Max weeks per hire</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+  </thead> %>
 
-  <tbody>
+  
     <% @items.each do |item| %>
+    <div class="cold-md-4" id="card_margin">
+    <div class="card" style="width: 18rem">
+    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">
+        <%= item.name %> <br>
+
+        <p class="card-text">
+          <%= item.description %><br>
+          <%# <%= item.instructions<br> %>
+          <%= item.price_per_hour %><br>
+          <%# <%= item.min_hours_per_hire<br> %>
+          <%= item.price_per_day %><br>
+          <%# <%= item.max_days_per_hire<br> %>
+          <%# <%= item.price_per_week<br> %>
+          <%# <%= item.max_weeks_per_hire<br> %>
+        </p>
+
+        <%= link_to 'More Info', item, class: 'btn btn-outline-primary' %>
+        <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-outline-primary' %>
+        <%= link_to 'Delete', item, class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
+      </div>
+    </div>
       <tr>
         <td><%= item.name %></td>
         <td><%= item.description %></td>
@@ -33,11 +64,15 @@
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
+      </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Item', new_item_path %>
+<%=link_to 'New Item', new_item_path %> <br>
+<%=link_to "Search Items", new_search_path%>
+  
+</div>
+
+
