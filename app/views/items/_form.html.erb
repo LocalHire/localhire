@@ -27,34 +27,22 @@
   </div>
 
   <div class="field">
-    <%= form.label :price_per_hour %>
-    <%= form.number_field :price_per_hour %>
-  </div>
+    <%= form.label(:per_hour_availability, "per hour availability") %>
+    <%= form.check_box(:per_hour_availability) %>
+ </div>
 
-  <div class="field">
-    <%= form.label :min_hours_per_hire %>
-    <%= form.number_field :min_hours_per_hire %>
-  </div>
+ <div class="field">
+    <%= form.label(:per_day_availability, "per day availability") %>
+    <%= form.check_box(:per_day_availability) %>
+ </div>
 
-  <div class="field">
-    <%= form.label :price_per_day %>
-    <%= form.number_field :price_per_day %>
-  </div>
+ <div class="field">
+    <%= form.label(:per_week_availability, "per week availability") %>
+    <%= form.check_box(:per_week_availability) %>
+ </div>
 
-  <div class="field">
-    <%= form.label :max_days_per_hire %>
-    <%= form.number_field :max_days_per_hire %>
-  </div>
 
-  <div class="field">
-    <%= form.label :price_per_week %>
-    <%= form.number_field :price_per_week %>
-  </div>
-
-  <div class="field">
-    <%= form.label :max_weeks_per_hire %>
-    <%= form.number_field :max_weeks_per_hire %>
-  </div>
+ 
 
    <div class="field">
     <%= form.label :image %>

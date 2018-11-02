@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_31_232919) do
+ActiveRecord::Schema.define(version: 2018_10_31_235917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,13 +54,18 @@ ActiveRecord::Schema.define(version: 2018_10_31_232919) do
     t.text "description"
     t.text "instructions"
     t.integer "price_per_hour"
-    t.integer "min_hours_per_hire"
+    t.integer "max_hours_per_hire"
     t.integer "price_per_day"
     t.integer "max_days_per_hire"
     t.integer "price_per_week"
     t.integer "max_weeks_per_hire"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "users_id"
+    t.string "per_hour_availability"
+    t.string "per_day_availability"
+    t.string "per_week_availability"
+    t.index ["users_id"], name: "index_items_on_users_id"
   end
 
   create_table "lenders", force: :cascade do |t|
@@ -93,5 +98,6 @@ ActiveRecord::Schema.define(version: 2018_10_31_232919) do
   add_foreign_key "bookings", "items"
   add_foreign_key "bookings", "lenders"
   add_foreign_key "bookings", "users"
+  add_foreign_key "items", "users", column: "users_id"
   add_foreign_key "lenders", "users"
 end

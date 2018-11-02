@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.text :description
       t.text :instructions
       t.integer :price_per_hour
-      t.integer :min_hours_per_hire
+      t.integer :max_hours_per_hire
       t.integer :price_per_day
       t.integer :max_days_per_hire
       t.integer :price_per_week

@@ -66,3 +66,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "devise", "~> 4.5"
 
 gem 'dotenv-rails', groups: [:development, :test]
+gem "stripe", "~> 3.29"
+

@@ -38,18 +38,19 @@
       </div>
     </div>
       <tr>
-        <%# <td><%= item.name</td></td> %>
-        <%# <td><%= item.description</td> %>
-        <%# <td><%= item.instructions</td> %>
-        <%# <td><%= item.price_per_hour</td> %>
-        <%# <td><%= item.min_hours_per_hire</td> %>
-        <%# <td><%= item.price_per_day</td>  %>
-        <%# <td><%= item.max_days_per_hire</td> %>
-        <%# <td><%= item.price_per_week</td> %>
-        <%# <td><%= item.max_weeks_per_hire</td> %>
-        <%# <td><%= link_to 'Show', item</td> %>
-        <%# <td><%= link_to 'Edit', edit_item_path(item)</td> %>
-        <%# <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }</td> %>
+        <td><%= item.name %></td>
+        <td><%= item.description %></td>
+        <td><%= item.instructions %></td>
+        <td><%= number_to_currency(item.price_per_hour) %></td>
+        <td><%= item.max_hours_per_hire %></td>
+        <td><%= number_to_currency(item.price_per_day) %></td>
+        <td><%= item.max_days_per_hire %></td>
+        <td><%= number_to_currency(item.price_per_week) %></td>
+        <td><%= item.max_weeks_per_hire %></td>
+        <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
       </div>
     <% end %>
