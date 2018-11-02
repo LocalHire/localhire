@@ -50,7 +50,7 @@
 
   <p>
   <label id="durationLabel" for="duration"></label> <!-- I removed the following between the label tags, but we can put it back if preferred - How long would you like to borrow this item for? -->
-  <input id="durationInput" name="duration" type="number" min="1" max="1">
+  <input id="durationInput" name="duration" type="number" min="1"> <!-- max="1" -->
   </p>
 
 
@@ -68,6 +68,13 @@
     <span id="total"></span>
   </p>
 
+
+<form id="myForm" action="//httpbin.org/post" method="POST">
+  <input type="text" id="amountInDollars" />
+  <input type="hidden" id="stripeToken" name="stripeToken" />
+  <input type="hidden" id="stripeEmail" name="stripeEmail" />
+  <input type="hidden" id="amountInCents" name="amountInCents" />
+</form>
 
   <%= submit_tag 'Create Booking' %>
   
@@ -130,5 +137,5 @@
   <%end%>
 </p>
 
-<%# <%= link_to 'Edit', edit_item_path(@item) | %> %>
+<%# <%= link_to 'Edit', edit_item_path(@item) | %>
 <%= link_to 'Back', items_path %>
