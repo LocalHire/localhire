@@ -13,7 +13,7 @@
   <%= @item.instructions %>
 </p>
 
-<%= form_tag charges_path do %>
+<%= form_tag charges_path, id: 'stripe-form' do %>
   <label for="price">Book this <%= @item.name %></label>
   <br>
   <select id="durationForHire" name="duration_for_hire">
@@ -67,18 +67,17 @@
     <strong>Total Booking Cost: </strong>
     <span id="total"></span>
   </p>
+  <input type="hidden" id="stripeToken" name="stripeToken">
+  <input type="hidden" id="stripeEmail" name="stripeEmail">
+  <input type="hidden" name="item_id" value="<%= @item.id %>">
 
-
-<form id="myForm" action="//httpbin.org/post" method="POST">
-  <input type="text" id="amountInDollars" />
-  <input type="hidden" id="stripeToken" name="stripeToken" />
-  <input type="hidden" id="stripeEmail" name="stripeEmail" />
-  <input type="hidden" id="amountInCents" name="amountInCents" />
-</form>
+  <button id="pay">Pay now</button>
 
   <%= submit_tag 'Create Booking' %>
   
 <% end %>
+
+  <script src="https://checkout.stripe.com/checkout.js"></script>
 
   <script>
   var durationForHire = document.getElementById("durationForHire")
@@ -126,7 +125,36 @@
     
   }
 
+// Init Stripe with our key
+var handler = StripeCheckout.configure({
+  key: "<%= Rails.configuration.stripe[:publishable_key] %>",
+  token: function(token) {
+    // Got the token!
+    // Update our form
+    $("#stripeToken").val(token.id);
+    $("#stripeEmail").val(token.email);
+    // And submit our form
+    $("#stripe-form").submit();
+  }
+});
 
+// Listen for user to click the pay button
+$('#pay').on('click', function(e) {
+  // Get the total amount and open stripe window
+  var amountInCents =  parseInt($('#total').html(),10) * 100;
+  handler.open({
+    name: "<%= @item.name %>",
+    amount: amountInCents,
+    currency:"AUD",
+    locale:"auto"
+  });
+  e.preventDefault();
+});
+
+// Close Checkout on page navigation
+$(window).on('popstate', function() {
+  handler.close();
+});
 
 </script>
 
