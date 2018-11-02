@@ -13,10 +13,14 @@ class ItemsController < ApplicationController
     end
   end
 
+
+
   # GET /items/1
   # GET /items/1.json
   def show
   end
+
+  
 
   # GET /items/new
   def new
