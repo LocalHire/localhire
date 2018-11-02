@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2018_11_02_032701) do
-
+ActiveRecord::Schema.define(version: 2018_11_02_063715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,11 +61,11 @@ ActiveRecord::Schema.define(version: 2018_11_02_032701) do
     t.integer "max_weeks_per_hire"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "lender_id"
     t.string "per_hour_availability"
     t.string "per_day_availability"
     t.string "per_week_availability"
     t.integer "user_id"
+    t.bigint "lender_id"
     t.index ["lender_id"], name: "index_items_on_lender_id"
   end
 

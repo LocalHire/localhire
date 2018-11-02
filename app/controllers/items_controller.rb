@@ -56,6 +56,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.lender_id = current_user.lender.id
     @item.user_id = current_user.id
+   
     # @item.save
     # redirect_to item_path(@item)
     
