@@ -1,23 +1,35 @@
+<div class="show-main">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>Name:</strong>
+    <%= @item.name %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%= @item.description %>
+  </p>
+  <p>
+    <strong>Instructions:</strong>
+    <%= @item.instructions %>
+  </p>
 
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Name:</strong>
-  <%= @item.name %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
-<p>
-  <strong>Instructions:</strong>
-  <%= @item.instructions %>
-</p>
+  <p>
+    <%(0...@item.images.count).each do |image|%>
+      <%=image_tag @item.images[image], width: '200', height: '200'%>
+    <%end%>
+  </p>
+
+  <%# <%= link_to 'Edit', edit_item_path(@item) | %>
+  <%= link_to 'Back', items_path %>
+
+</div>
+
 
 <%= form_tag charges_path, id: 'stripe-form' do %>
   <label for="price">Book this <%= @item.name %></label>
   <br>
   <select id="durationForHire" name="duration_for_hire">
-    <option selected="selected">Please choose a duration below</option>
+    <option selected="selected">Select the $ / timeframe</option>
     
     <% unless @item.price_per_hour.nil? %>
       <option 
@@ -48,10 +60,15 @@
     
   </select>
 
-  <p>
+  
   <label id="durationLabel" for="duration"></label> <!-- I removed the following between the label tags, but we can put it back if preferred - How long would you like to borrow this item for? -->
-  <input id="durationInput" name="duration" type="number" min="1"> <!-- max="1" -->
-  </p>
+
+  <div id="slidecontainer">
+    <input id="durationInput" name="duration" type="range" min="1" max="100" value="50" class="slider" id="myRange">
+  </div>
+  
+  <%# <input id="durationInput" name="duration" type="number" min="1"> <!-- max="1" --> %>
+  <%# </p> %>
 
 
   <article>
@@ -64,16 +81,15 @@
 
 
   <p>
-    <strong>Total Booking Cost: </strong>
+    <strong>Total Booking Cost: $</strong>
     <span id="total"></span>
   </p>
   <input type="hidden" id="stripeToken" name="stripeToken">
   <input type="hidden" id="stripeEmail" name="stripeEmail">
   <input type="hidden" name="item_id" value="<%= @item.id %>">
 
-  <button id="pay">Pay now</button>
+  <button id="pay">Make a Booking </button>
 
-  <%= submit_tag 'Create Booking' %>
   
 <% end %>
 
@@ -138,9 +154,9 @@ var handler = StripeCheckout.configure({
   }
 });
 
-// Listen for user to click the pay button
+// This listens for the user to click on the pay button
 $('#pay').on('click', function(e) {
-  // Get the total amount and open stripe window
+  // This gets the total amount and opens the stripe window
   var amountInCents =  parseInt($('#total').html(),10) * 100;
   handler.open({
     name: "<%= @item.name %>",
@@ -151,7 +167,7 @@ $('#pay').on('click', function(e) {
   e.preventDefault();
 });
 
-// Close Checkout on page navigation
+// This closes the Checkout on page navigation
 $(window).on('popstate', function() {
   handler.close();
 });
@@ -159,11 +175,3 @@ $(window).on('popstate', function() {
 </script>
 
 
-<p>
-  <%(0...@item.images.count).each do |image|%>
-    <%=image_tag @item.images[image], width: '200', height: '200'%>
-  <%end%>
-</p>
-
-<%# <%= link_to 'Edit', edit_item_path(@item) | %>
-<%= link_to 'Back', items_path %>
