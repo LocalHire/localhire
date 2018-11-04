@@ -10,13 +10,9 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <% if user_signed_in? %>    
-        <ul class="navbar-nav ml-md-auto">
-            
+        <ul class="navbar-nav ml-md-auto">            
             <li  class="nav-link">
               Welcome <strong><%= current_user.email %></strong>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Home", new_search_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
               <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %> 
@@ -24,20 +20,17 @@
             <li class="nav-item">
               <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link'  %>
             </li>
+            <li class="nav-item">
+              <%= link_to "My Bookings", bookings_path, class: 'nav-link' %>
+            </li>
         </ul>
     <% else %>
         <ul class="navbar-nav ml-md-auto">
-            <li class="nav-item active">
-              <%= link_to "Home", new_search_path, class: 'nav-link' %>
-            </li>
             <li class="nav-item">
               <%= link_to "Login", new_user_session_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
               <%= link_to "Sign Up", new_user_registration_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Bookings", bookings_path, class: 'nav-link' %>
             </li>
         </ul>
      <% end %>

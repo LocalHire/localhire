@@ -14,9 +14,11 @@ class ItemPolicy < ApplicationPolicy
 
   def edit?
     @user == @item.lender.user #returns true /false
+    @user == @item.user
   end
 
   def destroy?
     @user == @item.lender.user #returns true /false
+    @user == @item.user 
   end
 end

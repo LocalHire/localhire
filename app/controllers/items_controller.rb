@@ -18,6 +18,8 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    # @items.views += 1
+    # @item.save
   end
 
   
@@ -105,7 +107,7 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
 
-      params.require(:item).permit(:name, :description, :instructions, :price_per_hour, :price_per_day, :price_per_week, :max_hours_per_hire, :max_days_per_hire, :max_weeks_per_hire,:per_hour_availability, :per_day_availability, :per_week_availability, :user_id, :lender_id, images: [])
+      params.require(:item).permit(:name, :description, :instructions, :price_per_hour, :price_per_day, :price_per_week, :max_hours_per_hire, :max_days_per_hire, :max_weeks_per_hire,:per_hour_availability, :per_day_availability, :per_week_availability, :user_id, :lender_id, :views, images: [])
 
     end
 end

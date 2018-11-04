@@ -24,17 +24,36 @@
 
 <!--   THIS IS WHERE THE SIDEBAR - BOOKING AND STRIPE PAYMENT HTML/ERB IS -->
 <%= form_tag charges_path, id: 'stripe-form' do %>
-  <label for="price">Book this <%= @item.name %></label>
+  <label for="price">You can book this <%= @item.name %> for:</label>
   <br>
+  <div class="display-lender-hire-options">
+    <label for="lender-select-duration"> </label>
+      
+      <% unless @item.price_per_hour.nil? %>
+          <p>$<%= @item.price_per_hour %> per hour</p>
+      <% end %>
+      </p>
+      <p>
+       <% unless @item.price_per_day.nil? %>
+          <p>$<%= @item.price_per_day %> per day</p>
+      <% end %>
+      </p>
+      <p>
+      <% unless @item.price_per_week.nil? %>
+         <p>$<%= @item.price_per_week %> per week</p>
+      <% end %>
+  </div>
+
+<br>
   <select id="durationForHire" name="duration_for_hire">
-    <option selected="selected">Select the $ / timeframe</option>
+    <option selected="selected">Select which timeframe suits you</option>
     
     <% unless @item.price_per_hour.nil? %>
       <option 
         data-price="<%= @item.price_per_hour %>" 
         data-max="<%= @item.max_hours_per_hire %>" 
         value='hour'>
-          $ <%= @item.price_per_hour %> per hour
+          $<%= @item.price_per_hour %> per hour
         </option>
     <% end %>
 
@@ -43,7 +62,7 @@
         data-price="<%= @item.price_per_day %>" 
         data-max="<%= @item.max_days_per_hire %>" 
         value='day'>
-        $ <%= @item.price_per_day %> per day
+       $<%= @item.price_per_day %> per day
         </option>
     <% end %>
 
@@ -52,22 +71,21 @@
         data-price="<%= @item.price_per_week %>"
         data-max="<%= @item.max_weeks_per_hire %>"
          value='week'>
-        $ <%= @item.price_per_week %> per week
+        $<%= @item.price_per_week %> per week
         </option>
     <% end %>
-    
+  
   </select>
 
 
   
   <label id="durationLabel" for="duration"></label> <!-- I removed the following between the label tags, but we can put it back if preferred - How long would you like to borrow this item for? -->
-
-  <div class="slidecontainer">
-    <input id="durationInput" name="duration" type="range" min="1" max="100" value="50" class="slider" id="myRange">
+  <br>
+<div class="slidecontainer">
+    <input type="range" name="duration" id="durationInput" value="1" min="1" max="100" value="50" class="slider" oninput="durationOutput.value = durationInput.value" >
+    <output id="durationTimeframe" name="durationOutput" id="durationOutputId">1<%= %></output>
   </div>
-  
-  <%# <input id="durationInput" name="duration" type="number" min="1"> <!-- max="1" --> %>
-  <%# </p> %>
+
 
 
   <article>
@@ -105,11 +123,54 @@
 
   durationForHire.addEventListener("change", updateForm)
   durationInput.addEventListener("change", updateTotal)
+  durationTimeframe.addEventListenere("change", updateTime)
 
   function updateTotal(event) {
     durationPrice = durationForHire.options[durationForHire.selectedIndex].dataset.price
     totalText.innerText = durationPrice * event.target.value
   }
+
+ function updateTime(event) {
+   var durationTime = durationForHire.options[durationForHire.selectedIndex].value
+
+      // var durationTime = event.target.value
+      // durationMax = event.target.options[event.target.selectedIndex].dataset.max
+      // durationPrice = event.target.options[event.target.selectedIndex].dataset.price
+      var label = ""
+
+      // this stops the input from going over the maximum
+      // durationInput.max = durationMax
+
+      // this shows the total for the selected time and hours
+      // totalText.innerText = durationPrice *  durationInput.value
+
+      // this shows the user how long they can borrow an item based on the information that a lender has defined when creating or editing a product
+      switch (durationTime) {
+        case "week":
+          label = "weeks.";
+          break
+        case "day":
+          label = "days.";
+          break
+        case "hour":
+          label = "hours.";
+          break
+        default:
+          label = "?";
+      }
+    //this sets durationLabel to the appropriate case listed above.
+    durationTime.innerText = label
+  }
+
+
+
+
+
+
+
+
+
+
 
   function updateForm(event) {
       var durationChoice = event.target.value
@@ -176,14 +237,5 @@ $(window).on('popstate', function() {
 
 
 
-<p>
-  <%(0...@item.images.count).each do |image|%>
-    <%=image_tag @item.images[image], width: '200', height: '200'%>
-  <%end%>
-</p>
 
-<%# <%= link_to 'Edit', edit_item_path(@item) | %>
-<%= link_to 'Back', items_path %>
-
-</div>
 

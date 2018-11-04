@@ -4,7 +4,12 @@
 
 
 
-
+.container {
+    margin-top: 64px + 20px;
+}
+.page-footer {
+    background: #f4f5f2;
+}
 
  #stripe-form {
     //  border: 1px solid black;
@@ -35,4 +40,7 @@
 
  .slidecontainer {
     width: 80%; 
+}
+.display-lender-hire-options {
+    border: 1px solid black;
 }
