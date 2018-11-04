@@ -45,9 +45,6 @@ class ItemsController < ApplicationController
     if @item.per_week_availability == '1'
       @availability << [:price_per_week, :max_weeks_per_hire]
     end
-  
-
-
   end
 
   # POST /items

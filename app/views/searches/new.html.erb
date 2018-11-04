@@ -1,21 +1,33 @@
-<h1>Hello! What Are You Looking For?</h1>
 
 
-<%= form_for @search do |f|%>
+<div class="search-form-page">
+
+    <h2>Hello! What Are You Looking For?</h2>
     
-    <p>
-        <%= f.label :keywords %>
-        <%= f.text_field :keywords%><br/>
-    </p>
-    <p> 
-       
-        <%= f.label :'Hire Duration'%>
-        <%= f.text_field :hireduration%><br/>
-    </p>
-    <p>
-        <%= f.submit "Search"%>
-    </p>
+    <div class="search-form">
+    <%= form_for @search do |f|%>
+        
+        <div class="form-group">
+            <%= f.label :keywords, :class => "search-label" %>
+            <%= f.text_field :keywords, :class => "search-input"%><br/>
+        </div>
 
-<%end%>
+        <div class="form-group">   
+            <%= f.label :'Hire Duration',  :class => "search-label"%>
+            <%= f.text_field :hireduration, :class => "search-input"%>
+        </div>
 
-<%=link_to "All Items", items_path%>
+        <div class="btn">
+            <%= f.submit "Search", :class => "search-button"%>
+        </div>
+
+        
+    <%end%>
+    <div class="btn allitems-button">
+            <p><%=link_to "Show me All Items", items_path,  :class => "link"%></p>
+        </div>
+    </div>
+</div>
+
+
+

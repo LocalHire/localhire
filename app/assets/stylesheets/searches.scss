@@ -1,3 +1,50 @@
 // Place all the styles related to the searches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.search-form-page {
+    margin-top: 100px;
+    margin-left: 250px;
+}
+
+.search-form {
+    margin-top: 50px;
+}
+
+.search-label {
+    width: 100px;
+}
+
+.search-input {
+    width: 370px;
+}
+
+.form-group {
+    margin-top: 30px;
+}
+
+.search-button {
+    width: 470px;
+    height: 50px;
+    background-color:yellowgreen;
+    color: darkslategrey;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.allitems-button {
+    width: 470px;
+    height: 50px;
+    background-color:yellowgreen;
+    color: darkslategrey;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-left: 16px;
+
+}
+
+.link {
+    text-decoration: none;
+    color: darkslategrey;  
+}
