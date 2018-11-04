@@ -74,3 +74,5 @@ gem "stripe", "~> 3.29"
 
 
 gem "pundit", "~> 2.0"
+
+gem "aws-sdk", "~> 3.0"

@@ -8,9 +8,9 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.all
-    if user_signed_in?
-      LocalhireMailer.with(user: current_user).new_booking.deliver_now
-    end
+    # if user_signed_in?
+    #   LocalhireMailer.with(user: current_user).new_booking.deliver_now
+    # end
   end
 
 
