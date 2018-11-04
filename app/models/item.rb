@@ -3,6 +3,13 @@ class Item < ApplicationRecord
     belongs_to :lender
     belongs_to :user
     has_many :bookings
+
+    geocoded_by :address
+    after_validation :geocode
+  def address
+    [street, city, state, country].compact.join(', ')
+  end
+
 end
 
 
