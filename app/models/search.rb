@@ -6,9 +6,32 @@ class Search < ApplicationRecord
     private
 
         def find_items
+            
+        
             items = Item.all
             items = items.where("name ilike ?", "%#{keywords}%") if keywords.present?
-            items = items.where("max_days_per_hire >= ?", hireduration) if hireduration.present?
+
+            if hireplan == 'HOURS'
+                items = items.where("per_hour_availability like ?", '1')
+                items = items.where("max_hours_per_hire >= ?", duration) if duration.present?
+                items = items.where("price_per_hour >= ?", minprice) if minprice.present?
+                items = items.where("price_per_hour <= ?", maxprice) if maxprice.present?
+            end
+            if hireplan == 'DAYS'
+                items = items.where("per_day_availability like ?", '1')
+                items = items.where("max_days_per_hire >= ?", duration) if duration.present?
+                items = items.where("price_per_day >= ?", minprice) if minprice.present?
+                items = items.where("price_per_day <= ?", maxprice) if maxprice.present?
+            end
+            if hireplan == 'WEEKS'
+                items = items.where("per_week_availability like ?", '1')
+                items = items.where("max_weeks_per_hire >= ?", duration) if duration.present?
+                items = items.where("price_per_week >= ?", minprice) if minprice.present?
+                items = items.where("price_per_week <= ?", maxprice) if maxprice.present?
+
+            end
             items
+        
+
         end
 end
