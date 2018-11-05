@@ -2,6 +2,10 @@
 
 <%= render 'form', item: @item %>
 
-<%# DOES NOT CURRENTLY WORK - NOMETHODERROR <%= render 'availability', item: @item %>  
+ <%# <%= render 'availability', item: @item %>  
+
+<%= render 'location', item: @item %>
+
+
 
 <%= link_to 'Back', items_path %>
