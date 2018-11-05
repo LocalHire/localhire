@@ -26,14 +26,15 @@
     <%= form.text_area :instructions %>
   </div>
 
-
-<%# <input type="checkbox" id="per-day" value="1"> Per day
-
-    <div id="per-day-details" style="display:none;">
-      PER DAY STUFF
-    </div> %>
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :images, multiple: true %>
+  </div>
 
 
+
+<div id=" asdfasdfa">
+h2
   <div class="field">
     <%= form.label(:per_hour_availability, "Per hour availability") %>
     <%= form.check_box(:per_hour_availability, id: "price-per-hour") %>
@@ -80,18 +81,15 @@
 </div>
 
 
-   <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :images, multiple: true %>
-  </div>
+ 
 
 
 
 
-
+<%# 
   <div class="actions">
     <%= form.submit %>
-  </div>
+  <%# </div> %>
 
 <script>
 
