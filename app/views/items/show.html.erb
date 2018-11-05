@@ -24,6 +24,13 @@
 
 <!--   THIS IS WHERE THE SIDEBAR - BOOKING AND STRIPE PAYMENT HTML/ERB IS -->
 <%= form_tag charges_path, id: 'stripe-form' do %>
+  <div class="location-available">
+    </p>
+    This item is located in <%= @item.suburb %>
+    </p>
+
+  </div>
+  
   <label for="price">You can book this <%= @item.name %> for:</label>
   <br>
   <div class="display-lender-hire-options">
