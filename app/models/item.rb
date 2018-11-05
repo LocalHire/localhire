@@ -7,7 +7,7 @@ class Item < ApplicationRecord
     geocoded_by :address
     after_validation :geocode
   def address
-    [street, city, state, country].compact.join(', ')
+    [street, city, postcode, state].compact.join(', ')
   end
 
 end
