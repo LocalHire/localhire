@@ -1,10 +1,9 @@
-<h2>Create a new Item to lend</h2>
+<div class="new-item-wrapper">
+    <div>
+        <%= render 'form', item: @item %>
+    </div>
 
-<%= render 'form', item: @item %>
-
-
-<%= render 'location', item: @item %>
-
-
-
-<%= link_to 'Back', items_path %>
+    <div>
+        <%= link_to 'Back', items_path %>
+    </div>
+</div>

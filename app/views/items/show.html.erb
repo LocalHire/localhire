@@ -84,16 +84,12 @@
   
   </select>
 
-
-  
   <label id="durationLabel" for="duration"></label> <!-- I removed the following between the label tags, but we can put it back if preferred - How long would you like to borrow this item for? -->
   <br>
-<div class="slidecontainer">
+  <div class="slidecontainer">
     <input type="range" name="duration" id="durationInput" value="1" min="1" max="23" value="50" class="slider" oninput="durationOutput.value = durationInput.value" >
     <output id="durationTimeframe" name="durationOutput" id="durationOutputId">1<%= %></output>
   </div>
-
-
 
   <article>
     <% if flash[:error].present? %>
@@ -114,7 +110,6 @@
 
   <button id="pay">Make a Booking </button>
 
-  
 <% end %>
 
 <!--     THIS IS WHERE ALL THE JAVASCRIPT IS      -->
@@ -130,20 +125,20 @@
 
   durationForHire.addEventListener("change", updateForm)
   durationInput.addEventListener("change", updateTotal)
-  durationTimeframe.addEventListenere("change", updateTime)
+  // durationTimeframe.addEventListenere("change", updateTime)
 
   function updateTotal(event) {
     durationPrice = durationForHire.options[durationForHire.selectedIndex].dataset.price
     totalText.innerText = durationPrice * event.target.value
   }
 
- function updateTime(event) {
-   var durationTime = durationForHire.options[durationForHire.selectedIndex].value
+//  function updateTime(event) {
+//    var durationTime = durationForHire.options[durationForHire.selectedIndex].value
 
       // var durationTime = event.target.value
       // durationMax = event.target.options[event.target.selectedIndex].dataset.max
       // durationPrice = event.target.options[event.target.selectedIndex].dataset.price
-      var label = ""
+      // var label = ""
 
       // this stops the input from going over the maximum
       // durationInput.max = durationMax
@@ -152,22 +147,27 @@
       // totalText.innerText = durationPrice *  durationInput.value
 
       // this shows the user how long they can borrow an item based on the information that a lender has defined when creating or editing a product
-      switch (durationTime) {
-        case "week":
-          label = "weeks.";
-          break
-        case "day":
-          label = "days.";
-          break
-        case "hour":
-          label = "hours.";
-          break
-        default:
-          label = "?";
-      }
-    //this sets durationLabel to the appropriate case listed above.
-    durationTime.innerText = label
-  }
+      
+      
+      
+      // switch (durationTime) {
+      //   case "week":
+      //     label = "weeks.";
+      //     break
+      //   case "day":
+      //     label = "days.";
+      //     break
+      //   case "hour":
+      //     label = "hours.";
+      //     break
+      //   default:
+      //     label = "?";
+      // }
+
+
+   
+  //   durationTime.innerText = label
+  // }
 
 
 

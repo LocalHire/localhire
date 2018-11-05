@@ -1,3 +1,5 @@
+<div id="item-form">
+<h2>Create a new Item to lend</h2>
 <%= form_with(model: item, local: true) do |form| %>
   <% if item.errors.any? %>
     <div id="error_explanation">
@@ -30,11 +32,12 @@
     <%= form.label :image %>
     <%= form.file_field :images, multiple: true %>
   </div>
+<div>
 
 
+<div id="availability-form">
+<h2>Availability</h2>
 
-<div id=" asdfasdfa">
-h2
   <div class="field">
     <%= form.label(:per_hour_availability, "Per hour availability") %>
     <%= form.check_box(:per_hour_availability, id: "price-per-hour") %>
@@ -55,14 +58,14 @@ h2
     <%= form.check_box(:per_day_availability, id: "price-per-day") %>
  </div>
  <div id="price-per-day-details" class="hidden" style="display:none;">
-  <div class="field">
-    <%= form.label :price_per_day %>
-    <%= form.number_field :price_per_day %>
-  </div>
     <div class="field">
-    <%= form.label :max_days_per_hire %>
-    <%= form.number_field :max_days_per_hire %>
-  </div>
+      <%= form.label :price_per_day %>
+      <%= form.number_field :price_per_day %>
+    </div>
+      <div class="field">
+      <%= form.label :max_days_per_hire %>
+      <%= form.number_field :max_days_per_hire %>
+    </div>
   </div>
 
  <div class="field">
@@ -81,15 +84,60 @@ h2
 </div>
 
 
- 
+<div id="location-form">
+  <%= form_with(model: item, local: true) do |form| %>
+    <% if item.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
 
+        <ul>
+        <% item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
+  <h2> This is <strong>Local</strong>Hire so we need to know where you will be lending your item from?</h2>
+  <p>We will not post this information on the item show page, just the suburb.  However, the street address is required for when someone makes a successful booking</p>
 
+    <div class="field">
+      <%= form.label :street %>
+      <%= form.text_field :street %>
+    </div>
 
-<%# 
+    <div class="field">
+      <%= form.label :suburb %>
+      <%= form.text_field :suburb %>
+    </div>
+
+    <div class="field">
+      <%= form.label :city %>
+      <%= form.text_field :city%>
+    </div>
+
+    <div class="field">
+      <%= form.label :state %>
+      <%= form.text_field :state %>
+    </div>
+
+    <div class="field">
+      <%= form.label :postcode %>
+      <%= form.text_field :postcode%>
+    </div>
+</div>
+
   <div class="actions">
     <%= form.submit %>
-  <%# </div> %>
+  </div>
+<% end %>
+
+
+
+
+  <%# <div class="actions">
+    <%= form.submit %>
+  <%# </div> %> 
 
 <script>
 
@@ -121,6 +169,6 @@ h2
 
 
 </script>
-
-
 <% end %>
+
+
