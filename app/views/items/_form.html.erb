@@ -16,7 +16,7 @@
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
+  <div class="field ">
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
@@ -26,20 +26,58 @@
     <%= form.text_area :instructions %>
   </div>
 
+
+<%# <input type="checkbox" id="per-day" value="1"> Per day
+
+    <div id="per-day-details" style="display:none;">
+      PER DAY STUFF
+    </div> %>
+
+
   <div class="field">
-    <%= form.label(:per_hour_availability, "per hour availability") %>
-    <%= form.check_box(:per_hour_availability) %>
- </div>
+    <%= form.label(:per_hour_availability, "Per hour availability") %>
+    <%= form.check_box(:per_hour_availability, id: "price-per-hour") %>
+  </div>
+  <div id="price-per-hour-details" class="hidden" style="display:none;">
+    <div class="field ">
+      <%= form.label :price_per_hour %>
+      <%= form.number_field :price_per_hour %>
+    </div>
+    <div class="field ">
+      <%= form.label :max_hours_per_hire %>
+      <%= form.number_field :max_hours_per_hire %>
+    </div>
+  </div>
 
  <div class="field">
-    <%= form.label(:per_day_availability, "per day availability") %>
-    <%= form.check_box(:per_day_availability) %>
+    <%= form.label(:per_day_availability, "Per day availability") %>
+    <%= form.check_box(:per_day_availability, id: "price-per-day") %>
  </div>
+ <div id="price-per-day-details" class="hidden" style="display:none;">
+  <div class="field">
+    <%= form.label :price_per_day %>
+    <%= form.number_field :price_per_day %>
+  </div>
+    <div class="field">
+    <%= form.label :max_days_per_hire %>
+    <%= form.number_field :max_days_per_hire %>
+  </div>
+  </div>
 
  <div class="field">
-    <%= form.label(:per_week_availability, "per week availability") %>
-    <%= form.check_box(:per_week_availability) %>
+    <%= form.label(:per_week_availability, "Per week availability") %>
+    <%= form.check_box(:per_week_availability, id: "price-per-week") %>
  </div>
+ <div id="price-per-week-details" class="hidden" style="display:none;">
+  <div class="field ">
+    <%= form.label :price_per_week %>
+    <%= form.number_field :price_per_week%>
+  </div>
+    <div class="field">
+    <%= form.label :max_weeks_per_hire %>
+    <%= form.number_field :max_weeks_per_hire %>
+  </div>
+</div>
 
 
    <div class="field">
@@ -50,4 +88,37 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+
+<script>
+
+ // Find every checkbox
+      var checkboxes = document.querySelectorAll('input[type=checkbox]');
+
+      // For each checkbox
+      checkboxes.forEach(function (checkbox) {
+
+        // Listen for a click
+        checkbox.addEventListener('click', function (){
+
+          // Find the associated details div
+          var perDurationDetails = this.id + '-details'
+          var details = document.getElementById(perDurationDetails)
+
+          // If it's checked
+          if (this.checked) {
+
+            // Display
+            details.style.display = 'block'
+          }else {
+
+            // Otherwise, hide
+            details.style.display = 'none'
+          }
+        })
+      })
+
+
+</script>
+
+
 <% end %>
