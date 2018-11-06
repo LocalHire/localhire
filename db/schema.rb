@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_05_063832) do
+ActiveRecord::Schema.define(version: 2018_11_06_114348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,39 @@ ActiveRecord::Schema.define(version: 2018_11_05_063832) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "borrowers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone"
+    t.text "bio"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_borrowers_on_account_id"
+    t.index ["user_id"], name: "index_borrowers_on_user_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "item_payments", force: :cascade do |t|
+    t.string "payment_number"
+    t.string "status"
+    t.date "date"
+    t.integer "cost"
+    t.bigint "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_item_payments_on_account_id"
+    t.index ["booking_id"], name: "index_item_payments_on_booking_id"
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -85,6 +118,31 @@ ActiveRecord::Schema.define(version: 2018_11_05_063832) do
     t.index ["user_id"], name: "index_lenders_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "conversation_id"
+    t.bigint "user_id"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.string "title"
+    t.datetime "start"
+    t.datetime "end"
+    t.bigint "lender_id"
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_schedules_on_account_id"
+    t.index ["item_id"], name: "index_schedules_on_item_id"
+    t.index ["lender_id"], name: "index_schedules_on_lender_id"
+  end
+
   create_table "searches", force: :cascade do |t|
     t.string "keywords"
     t.string "hireplan"
@@ -105,6 +163,15 @@ ActiveRecord::Schema.define(version: 2018_11_05_063832) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "account_id"
+    t.bigint "lender_id"
+    t.bigint "borrower_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone"
+    t.boolean "admin"
+    t.index ["account_id"], name: "index_users_on_account_id"
+    t.index ["borrower_id"], name: "index_users_on_borrower_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

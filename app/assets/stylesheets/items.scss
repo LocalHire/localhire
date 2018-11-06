@@ -1,32 +1,64 @@
-// Place all the styles related to the items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// ITEM - NEW PAGE //
+// the styling for the item-new page can be found in the _form.scss file
 
+  
+// ITEM - SHOW PAGE // 
+.item-show-page {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: 
+    "show-main show-item-sidebar";
+}
+.show-main {
+    grid-area: show-main;
+    margin: 20px;
+}
+ .show-main .image-block-show-page img {
+     margin-right: 10px;
+     margin-top: 20px;
+ }
 
+.show-item-sidebar {
+    grid-area: show-item-sidebar;
+    margin: 20px;
+}
+
+#stripe-form {
+    position: fixed; 
+    top: 0; 
+    background-color: #f4f5f2; 
+    overflow-x: hidden; /* Disable horizontal scroll */
+    margin-top: 100px;
+    padding:20px  ;      
+ }
+ .slidecontainer {
+    width: 100%; 
+}
+.display-lender-hire-options {
+    border: 1px solid black;
+    padding-left: 20px;
+}
+.hidden {
+    display:none;
+}
+
+// THIS IS THE ITEMS - INDEX PAGE? //
 .all-items-page {
     margin-top: 125px;
     margin-left: 10px;
 }
-
 .card-margin {
     margin-top: 12px;
     margin-bottom: 12px;
     margin-right: 20px;
 }
-
 .img-size {
     width: 245px;
     height: 300px;
 }
-
 .index-links {
     margin: 0;
     margin-bottom: 10px;
     margin-right: 10px;
 }
 
-.show-page {
-    margin-top: 125px;
-    margin-left: 10px;
-    margin-bottom: 20px;
-}

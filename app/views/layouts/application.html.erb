@@ -11,14 +11,18 @@
   </head>
 
   <body>
+    <div class="nav">
       <%= render 'shared/nav'%>
+    </div>
       
-      <div class="container">
-        <%= yield %>
-      </div>
+    <div class="yield">
+      <%= yield %>
+    </div>
 
-      <%= render 'shared/footer'%>
+    <div class="footer">
+      <%= render 'shared/footer' %>
+    </div>
+    
   </body>
 
-  
 </html>

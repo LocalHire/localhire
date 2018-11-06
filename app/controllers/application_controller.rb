@@ -18,7 +18,24 @@ class ApplicationController < ActionController::Base
             # flash[:error] = t "#{policy_name}.#{exception.query}", scope: "pundit", default: :default
             # redirect_to(request.referrer || root_path)
         end
-end
+    # def configure_permitted_parameters
+    #     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:first_name, :email) }
+    #   end
+
+
+    #   def configure_permitted_parameters
+    #     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :last_name, :email) }
+    #   end
+
+#     before_action :configure_permitted_parameters, if: :devise_controller?
+
+# protected
+
+# def configure_permitted_parameters
+#   devise_parameter_sanitizer.permit(:sign_up, keys: [:email,:password1,:password2,:title,:phone, :first_name , :last_name])
+# end
+
+ end
 
 
   
