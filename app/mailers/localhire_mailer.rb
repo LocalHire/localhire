@@ -1,8 +1,9 @@
 class LocalhireMailer < ApplicationMailer
-    def new_booking
+    def new_item
         @user = params[:user]
+        @item = params[:item]
        # @url  = 'http://example.com/login'
-        mail(to: @user.email, subject: 'Congratulations on your booking!')
+        mail(to: @user.email, subject: 'New Item Uploaded!')
     end
 end
 

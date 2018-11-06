@@ -1,13 +1,16 @@
 <div class="show-main">
   <p id="notice"><%= notice %></p>
+  
   <p>
     <strong>Name:</strong>
     <%= @item.name %>
   </p>
+  
   <p>
     <strong>Description:</strong>
     <%= @item.description %>
   </p>
+  
   <p>
     <strong>Instructions:</strong>
     <%= @item.instructions %>
@@ -18,6 +21,7 @@
       <%=image_tag @item.images[image], width: '200', height: '200'%>
     <%end%>
   </p>
+  
   <%# <%= link_to 'Edit', edit_item_path(@item) | %>
   <%= link_to 'Back', items_path %>
 </div>
@@ -28,7 +32,6 @@
     </p>
     This item is located in <%= @item.suburb %>
     </p>
-
   </div>
   
   <label for="price">You can book this <%= @item.name %> for:</label>
