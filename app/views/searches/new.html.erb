@@ -27,7 +27,18 @@
                 <%= f.label :min_price, "Price Range",  :class => "search-label"%>
                 <%= f.text_field :minprice, size: 19%> - 
                 <%= f.text_field :maxprice, size: 19%><br/>
-            </div>  
+            </div> 
+
+            <div class="form-group">
+                <%= f.label :suburb, :class => "search-label" %>
+                <%= f.text_field :suburb, :class => "search-input"%><br/>
+            </div> 
+
+            <div class="form-group">
+                <%= f.label :arearange, :class => "search-label" %>
+                <%= f.number_field :arearange, :class => "search-input"%><br/>
+            </div> 
+            
 
             <div class="btn">
                 <%= f.submit "Search", :class => "search-button"%>

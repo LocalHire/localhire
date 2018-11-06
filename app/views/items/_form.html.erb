@@ -38,11 +38,13 @@
     <%= form.label(:per_hour_availability, "Per hour availability") %>
     <%= form.check_box(:per_hour_availability, id: "price-per-hour") %>
   </div>
+
   <div id="price-per-hour-details" class="hidden" style="display:none;">
     <div class="field ">
       <%= form.label :price_per_hour %>
       <%= form.number_field :price_per_hour %>
     </div>
+
     <div class="field ">
       <%= form.label :max_hours_per_hire %>
       <%= form.number_field :max_hours_per_hire %>
@@ -53,6 +55,7 @@
     <%= form.label(:per_day_availability, "Per day availability") %>
     <%= form.check_box(:per_day_availability, id: "price-per-day") %>
  </div>
+
  <div id="price-per-day-details" class="hidden" style="display:none;">
   <div class="field">
     <%= form.label :price_per_day %>
@@ -62,12 +65,13 @@
     <%= form.label :max_days_per_hire %>
     <%= form.number_field :max_days_per_hire %>
   </div>
-  </div>
+</div>
 
  <div class="field">
     <%= form.label(:per_week_availability, "Per week availability") %>
     <%= form.check_box(:per_week_availability, id: "price-per-week") %>
  </div>
+
  <div id="price-per-week-details" class="hidden" style="display:none;">
   <div class="field ">
     <%= form.label :price_per_week %>
@@ -86,12 +90,41 @@
   </div>
 
 
+<h2> This is <strong>Local</strong>Hire so we need to know where you will be lending your item from?</h2>
+<p>We will not post this information on the item show page, just the suburb.  However, the street address is required for when someone makes a successful booking</p>
 
+  <div class="field">
+    <%= form.label :street %>
+    <%= form.text_field :street %>
+  </div>
+
+  <div class="field">
+    <%= form.label :suburb %>
+    <%= form.text_field :suburb %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city%>
+  </div>
+
+  <div class="field">
+    <%= form.label :state %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div class="field">
+    <%= form.label :postcode %>
+    <%= form.text_field :postcode%>
+  </div>
 
 
   <div class="actions">
     <%= form.submit %>
   </div>
+<% end %>
+
+
 
 <script>
 
@@ -125,4 +158,4 @@
 </script>
 
 
-<% end %>
+

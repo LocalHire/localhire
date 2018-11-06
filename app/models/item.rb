@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+
+  
     has_many_attached :images
     belongs_to :lender
     belongs_to :user
@@ -6,10 +8,13 @@ class Item < ApplicationRecord
 
     geocoded_by :address
     after_validation :geocode
+
   def address
     [street, suburb, city, postcode, state].compact.join(', ')
   end
 
 end
+
+
 
 

@@ -13,51 +13,6 @@
     <%= @item.instructions %>
   </p>
 
-  <p>
-    <%(0...@item.images.count).each do |image|%>
-      <%=image_tag @item.images[image], width: '200', height: '200'%>
-    <%end%>
-  </p>
-
-
-<div class="container show-page">
-
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Name:</strong>
-  <%= @item.name %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
-<p>
-  <strong>Instructions:</strong>
-  <%= @item.instructions %>
-</p>
-
-  <%# <%= link_to 'Edit', edit_item_path(@item) | %>
-  <%= link_to 'Back', items_path %>
-
-</div>
-
-
-<div class="show-main">
-  <p id="notice"><%= notice %></p>
-  <p>
-    <strong>Name:</strong>
-    <%= @item.name %>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <%= @item.description %>
-  </p>
-  <p>
-    <strong>Instructions:</strong>
-    <%= @item.instructions %>
-  </p>
-
-
   <p class="image-block-show-page">
     <%(0...@item.images.count).each do |image|%>
       <%=image_tag @item.images[image], width: '200', height: '200'%>
@@ -134,7 +89,7 @@
   <label id="durationLabel" for="duration"></label> <!-- I removed the following between the label tags, but we can put it back if preferred - How long would you like to borrow this item for? -->
   <br>
 <div class="slidecontainer">
-    <input type="range" name="duration" id="durationInput" value="1" min="1" max="24" value="50" class="slider" oninput="durationOutput.value = durationInput.value" >
+    <input type="range" name="duration" id="durationInput" value="1" min="1" max="23" value="50" class="slider" oninput="durationOutput.value = durationInput.value" >
     <output id="durationTimeframe" name="durationOutput" id="durationOutputId">1<%= %></output>
   </div>
 
@@ -285,18 +240,4 @@ $(window).on('popstate', function() {
   handler.close();
 });
 
-
 </script>
-
-
-
-<p>
-  <%(0...@item.images.count).each do |image|%>
-    <%=image_tag @item.images[image], width: '200', height: '200'%>
-  <%end%>
-</p>
-
-
-</div>
-
-

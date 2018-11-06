@@ -9,13 +9,18 @@ class Search < ApplicationRecord
             
         
             items = Item.all
+
+            if suburb.present? && arearange.present?
+                items = Item.near(suburb, arearange)
+            end
+
             items = items.where("name ilike ?", "%#{keywords}%") if keywords.present?
 
             if hireplan == 'HOURS'
                 items = items.where("per_hour_availability like ?", '1')
                 items = items.where("max_hours_per_hire >= ?", duration) if duration.present?
                 items = items.where("price_per_hour >= ?", minprice) if minprice.present?
-                items = items.where("price_per_hour <= ?", maxprice) if maxprice.present?
+                items = items.where("price_per_hour <= ?", maxprice) if maxprice.present?    
             end
             if hireplan == 'DAYS'
                 items = items.where("per_day_availability like ?", '1')
@@ -28,10 +33,8 @@ class Search < ApplicationRecord
                 items = items.where("max_weeks_per_hire >= ?", duration) if duration.present?
                 items = items.where("price_per_week >= ?", minprice) if minprice.present?
                 items = items.where("price_per_week <= ?", maxprice) if maxprice.present?
-
-            end
+            end      
+    
             items
-        
-
         end
 end
