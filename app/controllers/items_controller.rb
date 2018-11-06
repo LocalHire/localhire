@@ -23,6 +23,8 @@ class ItemsController < ApplicationController
   def new
     authenticate_user!
     @item = Item.new
+    #trying this new method below, if not working, uncomment the above instead:
+    # @item = current_user.items.build
   end
 
   # GET /items/1/edit
@@ -93,6 +95,24 @@ class ItemsController < ApplicationController
     end
   end
   
+  #Add and remove items to /from bookings
+  #for current_user
+  def booking
+    type = params[:type]
+
+    if type == "add"
+      current_user.booking_additions << @item
+      redirect_to booking_index_path, notice: "#{@item.name} was added to your bookings"
+    elsif type == "remove"
+      current_user.booking_additions.delete(@item)
+      redirect_to root_path, notice: "#{@item.name} was removed from your bookings"
+    else 
+      #type is missing, nothing should happen
+      redirect_to item_path(@item), notice: "Looks like nothing happened.  Try again!"
+    end
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -107,7 +127,7 @@ class ItemsController < ApplicationController
         :price_per_hour, :price_per_day, :price_per_week, 
         :max_hours_per_hire, :max_days_per_hire, :max_weeks_per_hire,
         :per_hour_availability, :per_day_availability, :per_week_availability, 
-        :user_id, :lender_id, :views, 
+        :user_id, :lender_id, :borrower_id, :views, 
         :street, :suburb, :city, :state, :postcode, :latitude, :longitude, images: [])
 
     end
