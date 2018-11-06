@@ -21,6 +21,10 @@ Rails.application.routes.draw do
   resources :items
   resources :searches
 
+  resources :conversations do 
+    resources :messages
+  end 
+
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
 
