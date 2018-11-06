@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
     @item.lender_id = current_user.lender.id
     @item.user_id = current_user.id
    
-    # @item.save
+    
     # redirect_to item_path(@item)
     
     respond_to do |format|
@@ -97,20 +97,20 @@ class ItemsController < ApplicationController
   
   #Add and remove items to /from bookings
   #for current_user
-  def booking
-    type = params[:type]
+  # def booking
+  #   type = params[:type]
 
-    if type == "add"
-      current_user.booking_additions << @item
-      redirect_to booking_index_path, notice: "#{@item.name} was added to your bookings"
-    elsif type == "remove"
-      current_user.booking_additions.delete(@item)
-      redirect_to root_path, notice: "#{@item.name} was removed from your bookings"
-    else 
-      #type is missing, nothing should happen
-      redirect_to item_path(@item), notice: "Looks like nothing happened.  Try again!"
-    end
-  end
+  #   if type == "add"
+  #     current_user.booking_additions << @item
+  #     redirect_to booking_index_path, notice: "#{@item.name} was added to your bookings"
+  #   elsif type == "remove"
+  #     current_user.booking_additions.delete(@item)
+  #     redirect_to root_path, notice: "#{@item.name} was removed from your bookings"
+  #   else 
+  #     #type is missing, nothing should happen
+  #     redirect_to item_path(@item), notice: "Looks like nothing happened.  Try again!"
+  #   end
+  # end
 
 
 
@@ -127,7 +127,7 @@ class ItemsController < ApplicationController
         :price_per_hour, :price_per_day, :price_per_week, 
         :max_hours_per_hire, :max_days_per_hire, :max_weeks_per_hire,
         :per_hour_availability, :per_day_availability, :per_week_availability, 
-        :user_id, :lender_id,  :views, 
+        :user_id, :lender_id, :views, 
         :street, :suburb, :city, :state, :postcode, :latitude, :longitude, 
         images: [])
         #i removed :borrower - it currently breaks the system
