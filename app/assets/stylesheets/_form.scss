@@ -1,0 +1,30 @@
+#item-form {
+display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "item-description
+    availability-form
+    location-form"
+    "back back back";
+}
+#item-descripton {
+    grid-area: item-description;
+    padding: 20px;
+}
+#availability-form { 
+    grid-area: availability-form;
+    padding: 20px;
+  }
+#location-form {
+    grid-area: location-form;
+    padding: 20px;
+}
+#back {
+    grid-area: back;
+}
+.hidden {
+    display:none;
+}
+#location-fine-print {
+    font-size: 12px;
+}

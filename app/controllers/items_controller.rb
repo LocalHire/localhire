@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
 
- 
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   # before_action :availability, only: [:show]
 
@@ -13,16 +12,12 @@ class ItemsController < ApplicationController
     # end
   end
 
-
-
   # GET /items/1
   # GET /items/1.json
   def show
     # @items.views += 1
     # @item.save
   end
-
-  
 
   # GET /items/new
   def new
@@ -48,12 +43,6 @@ class ItemsController < ApplicationController
       @availability << [:price_per_week, :max_weeks_per_hire]
     end
   end
-
-#   geocoded_by :address
-#   after_validation :geocode
-# def address
-#   [street, city, state, country].compact.join(', ')
-# end
 
   # POST /items
   # POST /items.json
@@ -114,7 +103,12 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
 
-      params.require(:item).permit(:name, :description, :instructions, :price_per_hour, :price_per_day, :price_per_week, :max_hours_per_hire, :max_days_per_hire, :max_weeks_per_hire,:per_hour_availability, :per_day_availability, :per_week_availability, :user_id, :lender_id, :views, :street, :suburb, :city, :state, :postcode, images: [])
+      params.require(:item).permit(:name, :description, :instructions, 
+        :price_per_hour, :price_per_day, :price_per_week, 
+        :max_hours_per_hire, :max_days_per_hire, :max_weeks_per_hire,
+        :per_hour_availability, :per_day_availability, :per_week_availability, 
+        :user_id, :lender_id, :views, 
+        :street, :suburb, :city, :state, :postcode, :latitude, :longitude, images: [])
 
     end
 end

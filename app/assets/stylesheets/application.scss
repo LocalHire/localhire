@@ -1,47 +1,28 @@
 @import "bootstrap"; 
 @import "searches";
 @import "items";
+@import "_footer";
+@import "_form";
 
-.container {
-    margin-top: 64px + 20px;
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    grid-template-columns: 100vw;
+    grid-template-areas:
+    "nav-area"
+	"yield-area"
+    "footer-area" ;
 }
-.page-footer {
-    background: #f4f5f2;
+.nav {
+    grid-area: nav-area;
+    height: 56px + 20px;
 }
-
- #stripe-form {
-    //  border: 1px solid black;
-    width: 350px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 64%;
-    background-color: #f4f5f2; /* Black */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    margin-top: 150px;
-    padding:20px  ;      
- }
-
- .show-main {
-    margin-left: 20px; /* Same width as the sidebar left position in px */
-    font-size: 28px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
-    right: 34%;
-    width: 650px;
+.yield {
+    grid-area: yield-area;
+    background: white;
 }
-
- .show-main .image-block-show-page img {
-     margin-right: 10px;
-     margin-top: 20px;
- }
-
- .slidecontainer {
-    width: 80%; 
-}
-.display-lender-hire-options {
-    border: 1px solid black;
-}
-
-.hidden {
-    display:none;
+.footer {
+    grid-area: footer-area;
+    margin-top: 20px; 
 }
