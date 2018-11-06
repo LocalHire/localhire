@@ -10,7 +10,7 @@
   </thead>
 
   <tbody>
-    <% @search.items.each do |item| %>
+    <% @search.items.sort{|a,b| b.updated_at <=> a.updated_at}.each do |item| %>
       <tr>
         <td><%= item.name %></td>
         <td><%= item.max_days_per_hire %></td>

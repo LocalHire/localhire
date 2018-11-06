@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+
+  <body>
+    <h2>Congrats! You have uploaded a new item. </h2>
+    <p>
+      The details of your items are as below:
+    </p>
+
+    <ul>
+      <li><strong>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> <%= @item.name %></li>
+      <li><strong>Description&nbsp;:</strong> <%= @item.description %></li>
+      <li><strong>Hour-Plan&nbsp;&nbsp;&nbsp;:</strong> <%= @item.price_per_hour%>$/hour with maximum <%= @item.max_hours_per_hire%>hours/hire</li>
+      <li><strong>Day-Plan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> <%= @item.price_per_day%>$/day with maximum <%= @item.max_days_per_hire%>days/hire</li>
+      <li><strong>Week-Plan&nbsp;&nbsp;&nbsp;:</strong> <%= @item.price_per_week%>$/week with maximum <%= @item.max_weeks_per_hire%>weeks/hire</li>
+      <li><strong>Location&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> <%= @item.suburb %></li>
+    </ul>
+    
+    <p>You will receive an email when a booking is requested for the item.</p>
+
+    <p>Regards,</p>
+    <p>Team LocalHire</p>
+
+  </body>
+</html>
+ 
