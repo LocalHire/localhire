@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.all.order('updated_at DESC')
     # if user_signed_in?
     #   LocalhireMailer.with(user: current_user).new_booking.deliver_now
     # end
@@ -68,7 +68,6 @@ class ItemsController < ApplicationController
         # format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
 
-        
       else
         format.html { render :new }
         format.json { render json: @item.errors, status: :unprocessable_entity }
