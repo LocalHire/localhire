@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :items
   has_one :lender
+  has_one :borrower
 end

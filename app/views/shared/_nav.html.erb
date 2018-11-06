@@ -12,7 +12,8 @@
     <% if user_signed_in? %>    
         <ul class="navbar-nav ml-md-auto">            
             <li  class="nav-link">
-              Welcome <strong><%= current_user.email %></strong>
+              Welcome <strong><%= current_user.first_name %></strong>
+              <%# <%= link_to 'dashboard', a href="/dashboard/index", :class => 'navlink' %>  
             </li>
             <li class="nav-item">
               <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %> 
