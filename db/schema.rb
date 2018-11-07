@@ -68,10 +68,10 @@ ActiveRecord::Schema.define(version: 2018_11_06_211638) do
     t.integer "max_weeks_per_hire"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "users_id"
     t.string "per_hour_availability"
     t.string "per_day_availability"
     t.string "per_week_availability"
-    t.integer "user_id"
     t.bigint "lender_id"
     t.integer "views", default: 0
     t.string "street"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2018_11_06_211638) do
     t.float "longitude"
     t.string "suburb"
     t.index ["lender_id"], name: "index_items_on_lender_id"
+    t.index ["users_id"], name: "index_items_on_users_id"
   end
 
   create_table "lenders", force: :cascade do |t|
@@ -135,5 +136,6 @@ ActiveRecord::Schema.define(version: 2018_11_06_211638) do
   add_foreign_key "bookings", "lenders"
   add_foreign_key "bookings", "users"
   add_foreign_key "items", "lenders"
+  add_foreign_key "items", "users", column: "users_id"
   add_foreign_key "lenders", "users"
 end
