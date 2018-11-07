@@ -3,6 +3,7 @@
 @import "items";
 @import "_footer";
 @import "_form";
+@import "messages";
 
 body {
     display: grid;
@@ -22,6 +23,7 @@ body {
 .yield {
     grid-area: yield-area;
     background: white;
+    margin-top: 56px;
 }
 .footer {
     grid-area: footer-area;

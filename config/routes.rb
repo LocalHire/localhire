@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # get 'dashboard/index', to: 'dashboard#index'
 
-  get 'user/:id', to: 'dashboards#index', as: 'dashboard'
+  get '/dashboard', to: 'dashboard#index', as: 'dashboard'
   # get 'dashboardkn/index', to: 'dashboard#index'
   # get 'dashboard/index', to: 'dashboard#index'
 

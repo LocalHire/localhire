@@ -1,5 +1,3 @@
-
-
 <div class="navigation">
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top ">
   <a class="navbar-brand" href="/">LOCAL HIRE</a>
@@ -12,7 +10,7 @@
     <% if user_signed_in? %>    
         <ul class="navbar-nav ml-md-auto">            
             <li  class="nav-link">
-              Welcome <strong><%= link_to "#{current_user.first_name}", dashboard_path(current_user.id), :class => 'nav-link' %></strong>
+              Welcome <strong><%= link_to "#{current_user.email}", dashboard_path(current_user.id), :class => 'nav-link' %></strong>
             </li>
             <li class="nav-item">
               <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %> 
@@ -34,13 +32,6 @@
             </li>
         </ul>
      <% end %>
-
-    <%# Below is a search bar & button on the nav bar if we think we need/like the extra functionality %>
-
-    <%# <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form> %>
   </div>
 </nav>
 </div>
