@@ -33,8 +33,7 @@ class Search < ApplicationRecord
                 items = items.where("max_weeks_per_hire >= ?", duration) if duration.present?
                 items = items.where("price_per_week >= ?", minprice) if minprice.present?
                 items = items.where("price_per_week <= ?", maxprice) if maxprice.present?
-            end      
-    
+            end   
             items
         end
 end
