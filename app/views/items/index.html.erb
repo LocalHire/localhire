@@ -1,17 +1,27 @@
 <div class="container all-items-page">
+<div class="all-of-the-items">
+
+<div class="info-text">
+  <h3>Showing all items</h3>
+</div>
+
+<div class="buttons">
   <% if user_signed_in? %>  
     <%=link_to 'Add New Item', new_item_path, class: 'btn btn-outline-success index-links' %> 
     <%=link_to "Search Items", new_search_path, class: 'btn btn-outline-primary index-links'%>
   <% else %>
     <%=link_to "Search Items", new_search_path, class: 'btn btn-outline-primary index-links'%>
   <% end %> 
+</div>
 
   <p id="notice"><%= notice %></p>
 
-  <div class="row">
+
+  <div class="all-items">
+
 
     <% @items.each do |item| %>
-      <div class="card-margin col-sm-3">
+      <%# <div class="card-margin col-sm-3"> %>
         <div class="card">
 
           <% item.images.each_with_index do |image, i| %>
@@ -42,7 +52,8 @@
         </div>
        </div>
     <% end %> 
-  </div>   
+  </div> 
+  </div>  
 </div>
 
 

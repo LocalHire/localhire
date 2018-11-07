@@ -1,10 +1,8 @@
-
-
 <div class="search-form-page">
-
+<div class="search-form">
     <h2>Hello! What Are You Looking For?</h2>
     
-    <div class="search-form">
+    
         <%= form_for @search do |f|%>
             
             <div class="form-group">
@@ -45,10 +43,11 @@
             </div>
 
         <%end%>
-    </div>
+    
 
     <div class="btn allitems-button">
         <p><%=link_to "Show me All Items", items_path,  :class => "link"%></p>
+    </div>
     </div>
 </div>
 
@@ -58,7 +57,6 @@
         $("#value").html(newValue);
     });
 </script>
-
 
 
 
