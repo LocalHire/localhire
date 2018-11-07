@@ -31,21 +31,12 @@
 
             <div>
               <%= link_to 'More', item, class: 'btn btn-outline-success' %>
-<<<<<<< HEAD
               <% if user_signed_in? %>
               <% if current_user == item.user%> <!-- may have to change to current_user.lender.id to get this to work-->
                 <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-outline-primary' %>
                 <%= link_to 'Delete', item, class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
               <% end %>
               <% end %>
-=======
-              
-              <% if current_user.id == item.lender_id %>
-                <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-outline-primary' %>
-                <%= link_to 'Delete', item, class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              <% end %>
-              
->>>>>>> 25a31b66e501d01cc4035ce744d4300e119fb2c1
             </div>
           </div>
         </div>

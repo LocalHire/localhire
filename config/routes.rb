@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   root 'searches#new'
 
-  get 'dashboard/index', to: 'dashboard#index'
+  # get 'dashboard/index', to: 'dashboard#index'
+
+  get 'user/:id', to: 'dashboards#index', as: 'dashboard'
+  # get 'dashboardkn/index', to: 'dashboard#index'
+  # get 'dashboard/index', to: 'dashboard#index'
 
   get 'howitworks/hire', to: 'howitworks#hire'
   get 'howitworks/lend', to: 'howitworks#lend'
