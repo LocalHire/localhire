@@ -3,7 +3,22 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  after_action :create_lender, only: [:create]
+  # after_action :create_account, only: [:create]
+  after_action :create_associations, only: [:create]
+  # after_action :create_lender, only: [:create]
+
+# ----- GUY
+  
+
+  #then after the above add all of the id's back into the user, 
+  #so i would have to figure out the order for all of the after_actions, 
+  #so that i make sure that all the id's are where they need to be 
+  # so start with account, then filter down - i.e. account, borrower, lender, etc
+
+  #------------ END
+
+
+  #this is where i would put in other after_actions - such as create account_id, borrower_id and so on
 
   # GET /resource/sign_up
   # def new
@@ -41,12 +56,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # protected
 
-  def create_lender
+  # def create_account
+  #   @lender = Lender.new
+  #   @lender.user_id = User.last.id
+  #   @lender.phone = "0400275085" #think we can probably put in user.phone here automatically User.last.id(params[:phone])?
+  #   @lender.save
+  # end 
+
+  def create_associations
+    # @borrower = Borrower.new
+    # @borrower.user_id = User.last.id
+    # @borrower.phone = "0400275085" #think we can probably put in user.phone here automatically User.last.id(params[:phone])?
+    # @borrower.save
+    # when the above is uncommented it makes the following error: NameError in Users::RegistrationsController#create
+    # uninitialized constant Users::RegistrationsController::Borrower
+  
     @lender = Lender.new
     @lender.user_id = User.last.id
-    @lender.phone = "0400275085"
+    @lender.phone = "0400275085" #think we can probably put in user.phone here automatically User.last.id(params[:phone])?
     @lender.save
   end 
+
+ 
+
+  
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

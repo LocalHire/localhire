@@ -1,31 +1,26 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
+@import "bootstrap"; 
+@import "searches";
+@import "items";
+@import "_footer";
+@import "_form";
 
- *= require_tree .
- *= require_self
- */
- @import "bootstrap"; 
-
- #card_margin{
-
-    margin: 30px;
- }
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    grid-template-columns: 100vw;
+    grid-template-areas:
+    "nav-area"
+	"yield-area"
+    "footer-area" ;
+}
+.nav {
+    grid-area: nav-area;
+    height: 56px + 20px;
+}
 
  #stripe-form {
-    background: #f4f5f2;
-     background: #f4f5f2;
     //  border: 1px solid black;
-
     width: 350px; /* Set the width of the sidebar */
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
     z-index: 1; /* Stay on top */
@@ -34,25 +29,27 @@
     background-color: #f4f5f2; /* Black */
     overflow-x: hidden; /* Disable horizontal scroll */
     margin-top: 150px;
-
-    padding:20px;        
+    padding:20px  ;      
  }
 
  .show-main {
-    margin-left: 20px; /* Same width as the sidebar + left position in px */
+    margin-left: 20px; /* Same width as the sidebar left position in px */
+    padding:20px
+ }    
 
+
+.show-main {
+    margin-left: 20px; /* Same width as the sidebar + left position in px */
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 0px 10px;
     right: 34%;
     width: 650px;
 }
-
- .show-main .image-block-show-page img {
-     margin-right: 20px;
-
- }
-
- .slidecontainer {
-    width: 80%; /* Width of the outside container */
+.yield {
+    grid-area: yield-area;
+    background: white;
 }
-
+.footer {
+    grid-area: footer-area;
+    margin-top: 20px; 
+}

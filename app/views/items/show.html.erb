@@ -1,132 +1,123 @@
-<div class="show-main">
-  <p id="notice"><%= notice %></p>
-  <p>
-    <strong>Name:</strong>
-    <%= @item.name %>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <%= @item.description %>
-  </p>
-  <p>
-    <strong>Instructions:</strong>
-    <%= @item.instructions %>
-  </p>
+<div class="item-show-page">
+  <div class="show-main">
+    <p id="notice"><%= notice %></p>
 
-  <p>
-    <%(0...@item.images.count).each do |image|%>
-      <%=image_tag @item.images[image], width: '200', height: '200'%>
-    <%end%>
-  </p>
+    <p>
+      <strong>Name:</strong>
+      <%= @item.name %>
+    </p>
 
-  <%# <%= link_to 'Edit', edit_item_path(@item) | %>
-  <%= link_to 'Back', items_path %>
+    <p>
+      <strong>Description:</strong>
+      <%= @item.description %>
+    </p>
 
-</div>
+    <p>
+      <strong>Instructions:</strong>
+      <%= @item.instructions %>
+    </p>
 
-<<<<<<< HEAD
-=======
-
-<div class="show-main">
-  <p id="notice"><%= notice %></p>
-  <p>
-    <strong>Name:</strong>
-    <%= @item.name %>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <%= @item.description %>
-  </p>
-  <p>
-    <strong>Instructions:</strong>
-    <%= @item.instructions %>
-  </p>
-
-
-  <p class="image-block-show-page">
-    <%(0...@item.images.count).each do |image|%>
-      <%=image_tag @item.images[image], width: '200', height: '200'%>
-    <%end%>
-  </p>
-  <%# <%= link_to 'Edit', edit_item_path(@item) | %>
-  <%= link_to 'Back', items_path %>
-</div>
+    <p class="image-block-show-page">
+      <%(0...@item.images.count).each do |image|%>
+        <%=image_tag @item.images[image], width: '200', height: '200'%>
+      <%end%>
+    </p>
+    <%= link_to 'Back', items_path %>
+  </div>
 
 <!--   THIS IS WHERE THE SIDEBAR - BOOKING AND STRIPE PAYMENT HTML/ERB IS -->
->>>>>>> item-page-basic-styling
+  <div class="show-item-sidebar">
+    <%= form_tag charges_path, id: 'stripe-form' do %>
+      <div class="location-available">
+        </p>
+        This item is located in <%= @item.suburb %>
+        </p>
 
-<%= form_tag charges_path, id: 'stripe-form' do %>
-  <label for="price">Book this <%= @item.name %></label>
-  <br>
-  <select id="durationForHire" name="duration_for_hire">
-    <option selected="selected">Select the $ / timeframe</option>
-    
-    <% unless @item.price_per_hour.nil? %>
-      <option 
-        data-price="<%= @item.price_per_hour %>" 
-        data-max="<%= @item.max_hours_per_hire %>" 
-        value='hour'>
-          $ <%= @item.price_per_hour %> per hour
-        </option>
-    <% end %>
-
-    <% unless @item.price_per_day.nil? %>
-      <option 
-        data-price="<%= @item.price_per_day %>" 
-        data-max="<%= @item.max_days_per_hire %>" 
-        value='day'>
-        $ <%= @item.price_per_day %> per day
-        </option>
-    <% end %>
-
-    <% unless @item.price_per_week.nil? %>
-      <option 
-        data-price="<%= @item.price_per_week %>"
-        data-max="<%= @item.max_weeks_per_hire %>"
-         value='week'>
-        $ <%= @item.price_per_week %> per week
-        </option>
-    <% end %>
-    
-  </select>
-
-
-  
-  <label id="durationLabel" for="duration"></label> <!-- I removed the following between the label tags, but we can put it back if preferred - How long would you like to borrow this item for? -->
-
-  <div id="slidecontainer">
-    <input id="durationInput" name="duration" type="range" min="1" max="100" value="50" class="slider" id="myRange">
-  </div>
-  
-  <%# <input id="durationInput" name="duration" type="number" min="1"> <!-- max="1" --> %>
-  <%# </p> %>
-
-
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
       </div>
+      
+      <label for="price">You can book this <%= @item.name %> for:</label>
+      <br>
+      <div class="display-lender-hire-options">
+        <label for="lender-select-duration"> </label>
+          
+          <% unless @item.price_per_hour.nil? %>
+              <p>$<%= @item.price_per_hour %> per hour</p>
+          <% end %>
+          </p>
+          <p>
+          <% unless @item.price_per_day.nil? %>
+              <p>$<%= @item.price_per_day %> per day</p>
+          <% end %>
+          </p>
+          <p>
+          <% unless @item.price_per_week.nil? %>
+            <p>$<%= @item.price_per_week %> per week</p>
+          <% end %>
+      </div>
+
+    <br>
+      <select id="durationForHire" name="duration_for_hire">
+        <option selected="selected">Select which timeframe suits you</option>
+        
+        <% unless @item.price_per_hour.nil? %>
+          <option 
+            data-price="<%= @item.price_per_hour %>" 
+            data-max="<%= @item.max_hours_per_hire %>" 
+            value='hour'>
+              $<%= @item.price_per_hour %> per hour
+            </option>
+        <% end %>
+
+        <% unless @item.price_per_day.nil? %>
+          <option 
+            data-price="<%= @item.price_per_day %>" 
+            data-max="<%= @item.max_days_per_hire %>" 
+            value='day'>
+          $<%= @item.price_per_day %> per day
+            </option>
+        <% end %>
+
+        <% unless @item.price_per_week.nil? %>
+          <option 
+            data-price="<%= @item.price_per_week %>"
+            data-max="<%= @item.max_weeks_per_hire %>"
+            value='week'>
+            $<%= @item.price_per_week %> per week
+            </option>
+        <% end %>
+      
+      </select>
+
+      <label id="durationLabel" for="duration"></label> <!-- I removed the following between the label tags, but we can put it back if preferred - How long would you like to borrow this item for? -->
+      <br>
+      <div class="slidecontainer">
+        <input type="range" name="duration" id="durationInput" value="1" min="1" max="23" value="50" class="slider" oninput="durationOutput.value = durationInput.value" >
+        <output id="durationTimeframe" name="durationOutput" id="durationOutputId">1<%= %></output>
+      </div>
+
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+      </article>
+
+
+      <p>
+        <strong>Total Booking Cost: $</strong>
+        <span id="total"></span>
+      </p>
+      <input type="hidden" id="stripeToken" name="stripeToken">
+      <input type="hidden" id="stripeEmail" name="stripeEmail">
+      <input type="hidden" name="item_id" value="<%= @item.id %>">
+
+      <button id="pay">Make a Booking </button>
+
     <% end %>
-  </article>
+  </div>
 
-
-  <p>
-    <strong>Total Booking Cost: $</strong>
-    <span id="total"></span>
-  </p>
-  <input type="hidden" id="stripeToken" name="stripeToken">
-  <input type="hidden" id="stripeEmail" name="stripeEmail">
-  <input type="hidden" name="item_id" value="<%= @item.id %>">
-
-<<<<<<< HEAD
-  <button id="pay">Make a Booking </button>
-
-=======
-  <button id="pay">Book now</button>
->>>>>>> item-page-basic-styling
-  
-<% end %>
+</div>
 
 <!--     THIS IS WHERE ALL THE JAVASCRIPT IS      -->
   <script src="https://checkout.stripe.com/checkout.js"></script>
@@ -141,11 +132,59 @@
 
   durationForHire.addEventListener("change", updateForm)
   durationInput.addEventListener("change", updateTotal)
+  // durationTimeframe.addEventListenere("change", updateTime)
 
   function updateTotal(event) {
     durationPrice = durationForHire.options[durationForHire.selectedIndex].dataset.price
     totalText.innerText = durationPrice * event.target.value
   }
+
+//  function updateTime(event) {
+//    var durationTime = durationForHire.options[durationForHire.selectedIndex].value
+
+      // var durationTime = event.target.value
+      // durationMax = event.target.options[event.target.selectedIndex].dataset.max
+      // durationPrice = event.target.options[event.target.selectedIndex].dataset.price
+      // var label = ""
+
+      // this stops the input from going over the maximum
+      // durationInput.max = durationMax
+
+      // this shows the total for the selected time and hours
+      // totalText.innerText = durationPrice *  durationInput.value
+
+      // this shows the user how long they can borrow an item based on the information that a lender has defined when creating or editing a product
+      
+      
+      
+      // switch (durationTime) {
+      //   case "week":
+      //     label = "weeks.";
+      //     break
+      //   case "day":
+      //     label = "days.";
+      //     break
+      //   case "hour":
+      //     label = "hours.";
+      //     break
+      //   default:
+      //     label = "?";
+      // }
+
+
+   
+  //   durationTime.innerText = label
+  // }
+
+
+
+
+
+
+
+
+
+
 
   function updateForm(event) {
       var durationChoice = event.target.value
@@ -190,11 +229,7 @@ var handler = StripeCheckout.configure({
   }
 });
 
-<<<<<<< HEAD
 // This listens for the user to click on the pay button
-=======
-// This listens for the user to click the pay button
->>>>>>> item-page-basic-styling
 $('#pay').on('click', function(e) {
   // This gets the total amount and opens the stripe window
   var amountInCents =  parseInt($('#total').html(),10) * 100;
@@ -207,19 +242,9 @@ $('#pay').on('click', function(e) {
   e.preventDefault();
 });
 
-<<<<<<< HEAD
 // This closes the Checkout on page navigation
-=======
-// This closes Checkout on page navigation
->>>>>>> item-page-basic-styling
 $(window).on('popstate', function() {
   handler.close();
 });
 
-<<<<<<< HEAD
 </script>
-
-
-=======
-</script>
->>>>>>> item-page-basic-styling

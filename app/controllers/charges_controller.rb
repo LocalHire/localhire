@@ -1,4 +1,7 @@
 class ChargesController < ApplicationController
+  def new
+  end 
+
   def create
     @item = Item.find(params[:item_id]) 
 
@@ -17,6 +20,7 @@ class ChargesController < ApplicationController
       @total = @item.price_per_week * duration
     end
 
+    raise
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
       :source  => params[:stripeToken]
@@ -28,6 +32,9 @@ class ChargesController < ApplicationController
       :description => @item.name,
       :currency    => 'AUD'
     )
+
+    LocalhireMailer.with(user: current_user, item: @item).new_booking_user.deliver_now
+    LocalhireMailer.with(user: current_user, item: @item).new_booking_lender.deliver_now
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

@@ -1,0 +1,37 @@
+<div class="card=image">
+<!--
+    <figure class="image is3by4">
+        <%= link_to image_tag(item.image????, alt: "#{item.name} by #{item.description}"), item %>
+    </figure>
+    GUY - the above needs to be fixed up, where i have put item.image??? that won't work, because of how we are storing images -->
+</div>
+
+<div class="card-content">
+    <div class="media-content">
+        <p class="title"><%= item.name %> </p>
+        <p class="description"><%= item.description %> </p>
+    </div>
+</div>
+
+<!-- THIS IS THE STUFF THAT I NEED -->
+
+<div class="content">
+    <% if user_signed_in? %> <!-- I don't think this will work - update teh method in the model? controller? changed "subscribed?" to "user_signed_in?" might work now-->
+
+        <% if user_added_to_booking?(current_user, item) %>
+
+            <%= link_to "Remove from Booking", add_item_path(item, type: "remove"), method: :put, class: "button is-danger is-fullwidth" %>
+<!-- The type: is referencing the library action (method) and going to the def library (in the items controller) where we first created the type - 'add', 'remove'-->
+            <% if controller.controller_name == "booking" %>
+                <%= link_to 'Download', '#', class:"button is-success" %>
+                <!-- GUY the above will also have to be changed - we don't download, instead this is a checks and balances thing-->
+            <% end %>
+
+        <% else %>
+            <%= link_to 'Add to Booking', add_item_path(item, type: "add"), method: :put, class: "button is-link is-fullwidth" %>
+        <% end %>
+
+    <% else %>
+        <%= link_to 'Add to Booking', new_user_registration_path, class: "button is-link is-fullwidth" %>
+    <%end%>
+</div>

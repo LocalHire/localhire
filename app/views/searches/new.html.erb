@@ -1,21 +1,66 @@
-<h1>Hello! What Are You Looking For?</h1>
 
 
-<%= form_for @search do |f|%>
+<div class="search-form-page">
+
+    <h2>Hello! What Are You Looking For?</h2>
     
-    <p>
-        <%= f.label :keywords %>
-        <%= f.text_field :keywords%><br/>
-    </p>
-    <p> 
-       
-        <%= f.label :'Hire Duration'%>
-        <%= f.text_field :hireduration%><br/>
-    </p>
-    <p>
-        <%= f.submit "Search"%>
-    </p>
+    <div class="search-form">
+        <%= form_for @search do |f|%>
+            
+            <div class="form-group">
+                <%= f.label :keywords, :class => "search-label" %>
+                <%= f.text_field :keywords, :class => "search-input"%><br/>
+            </div>
 
-<%end%>
+            <div class="form-group">   
+                <%= f.label :hireplan,  :class => "search-label"%>
+                <%= f.select(:hireplan, options_for_select([['HOURS','HOURS'], ['DAYS', 'DAYS'], ['WEEKS', 'WEEKS']]), :class => "search-input")%>                
+            </div>
 
-<%=link_to "All Items", items_path%>
+            <div class="form-group">
+                <%= f.label :duration,  :class => "search-label"%>
+                <%= f.range_field :duration, :min=>1, :max=>23, :class=>"slider", :id=>"duration"%>
+                <text id="value">12</text>
+            </div>
+
+             <div class="form-group">
+                <%= f.label :min_price, "Price Range",  :class => "search-label"%>
+                <%= f.text_field :minprice, size: 19%> - 
+                <%= f.text_field :maxprice, size: 19%><br/>
+            </div> 
+
+            <div class="form-group">
+                <%= f.label :suburb, :class => "search-label" %>
+                <%= f.text_field :suburb, :class => "search-input"%><br/>
+            </div> 
+
+            <div class="form-group">
+                <%= f.label :arearange, :class => "search-label" %>
+                <%= f.number_field :arearange, :class => "search-input"%><br/>
+            </div> 
+            
+
+            <div class="btn">
+                <%= f.submit "Search", :class => "search-button"%>
+            </div>
+
+        <%end%>
+    </div>
+
+    <div class="btn allitems-button">
+        <p><%=link_to "Show me All Items", items_path,  :class => "link"%></p>
+    </div>
+</div>
+
+<script>
+    $("#duration").change(function () {                    
+        var newValue = $('#duration').val();
+        $("#value").html(newValue);
+    });
+</script>
+
+
+
+
+
+

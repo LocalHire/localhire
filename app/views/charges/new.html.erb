@@ -17,7 +17,7 @@
 
 <script>
 var handler = StripeCheckout.configure({
-  key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+  key: '<%= Rails.configuration.stripe[:publishable_key] %>', // should this be :STRIPE_PUBLISHABLE_KEY
   locale: 'auto',
   name: 'Sand Castles United', // guy consider changing this as well - it might appear on charges - will have to look up
   description: 'Booking fee',

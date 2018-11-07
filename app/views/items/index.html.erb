@@ -1,61 +1,48 @@
-<div class="container">
-<%=link_to 'Add New Item', new_item_path %> <br>
-<%=link_to "Search Items", new_search_path%>
+<div class="container all-items-page">
+  <% if user_signed_in? %>  
+    <%=link_to 'Add New Item', new_item_path, class: 'btn btn-outline-success index-links' %> 
+    <%=link_to "Search Items", new_search_path, class: 'btn btn-outline-primary index-links'%>
+  <% else %>
+    <%=link_to "Search Items", new_search_path, class: 'btn btn-outline-primary index-links'%>
+  <% end %> 
+
+  <p id="notice"><%= notice %></p>
+
   <div class="row">
 
-    <p id="notice"><%= notice %></p>
-  
     <% @items.each do |item| %>
-    <div class="cold-md-4" id="card_margin">
-    <div class="card" style="width: 18rem">
+      <div class="card-margin col-sm-3">
+        <div class="card">
 
-    <% item.images.each_with_index do |image, i| %>
-      <% if i == 0 %>
-      <%= image_tag image, class: "card-img-top" %>
-      <%end%>
-    <% end %>
+          <% item.images.each_with_index do |image, i| %>
+            <% if i == 0 %>
+              <%= image_tag image, class: "card-img-top img-size" %>
+            <%end%>
+          <% end %>
 
-      <div class="card-body">
-        <h5 class="card-title">
-        <%= item.name %> <br>
+          <div class="card-body">
+            <h4 class="card-title"><%= item.name %></h4><br>
+            
+            <p class="card-text">
+              <%= item.description %><br>
+              <%= item.price_per_hour %><br>
+              <%= item.price_per_day %><br>
+            </p>
 
-        <p class="card-text">
-          <%= item.description %><br>
-          <%# <%= item.instructions<br> %>
-          <%= item.price_per_hour %><br>
-          <%# <%= item.max_hours_per_hire<br> %>
-          <%= item.price_per_day %><br>
-          <%# <%= item.max_days_per_hire<br> %>
-          <%# <%= item.price_per_week<br> %>
-          <%# <%= item.max_weeks_per_hire<br> %>
-        </p>
-
-        <%= link_to 'More Info', item, class: 'btn btn-outline-primary' %>
-        <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-outline-primary' %>
-        <%= link_to 'Delete', item, class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-
-      </div>
-    </div>
-      <tr>
-        <%# <td><%= item.name</td> %>
-        <%# <td><%= item.description</td> %>
-        <%# <td><%= item.instructions</td> %>
-        <%# <td><%= number_to_currency(item.price_per_hour)</td> %>
-        <%# <td><%= item.max_hours_per_hire</td> %>
-        <%# <td><%= number_to_currency(item.price_per_day)</td> %>
-        <%# <td><%= item.max_days_per_hire</td> %>
-        <%# <td><%= number_to_currency(item.price_per_week)</td>  %>
-        <%# <td><%= item.max_weeks_per_hire</td>  %>
-        <%# <td><%= link_to 'Show', item</td>  %>
-        <%# <td><%= link_to 'Edit', edit_item_path(item)</td>  %>
-        <%# <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }</td> %>
-
-      </tr>
-      </div>
-    <% end %>
-
-  
+            <div>
+              <%= link_to 'More', item, class: 'btn btn-outline-success' %>
+              
+              <% if current_user.id == item.lender_id %>
+                <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-outline-primary' %>
+                <%= link_to 'Delete', item, class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
+              
+            </div>
+          </div>
+        </div>
+       </div>
+    <% end %> 
+  </div>   
 </div>
 
 

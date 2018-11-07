@@ -4,3 +4,5 @@ class AddLenderIdToItems < ActiveRecord::Migration[5.2]
     add_reference :items, :lender, foreign_key: true
   end
 end
+
+

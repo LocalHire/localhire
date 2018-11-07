@@ -1,4 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+
+<div class="navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top ">
   <a class="navbar-brand" href="/">LOCAL HIRE</a>
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,20 +9,32 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-md-auto">
-      <li class="nav-item active">
-        <%= link_to "Home", new_search_path, class: 'nav-link' %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Login", new_user_session_path, class: 'nav-link' %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Sign Up", new_user_registration_path, class: 'nav-link' %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Bookings", bookings_path, class: 'nav-link' %>
-      </li>
-    </ul>
+    <% if user_signed_in? %>    
+        <ul class="navbar-nav ml-md-auto">            
+            <li  class="nav-link">
+              Welcome <strong><%= current_user.first_name %></strong>
+              <%# <%= link_to 'dashboard', a href="/dashboard/index", :class => 'navlink' %>  
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %> 
+            </li>
+            <li class="nav-item">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link'  %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "My Bookings", bookings_path, class: 'nav-link' %>
+            </li>
+        </ul>
+    <% else %>
+        <ul class="navbar-nav ml-md-auto">
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign Up", new_user_registration_path, class: 'nav-link' %>
+            </li>
+        </ul>
+     <% end %>
 
     <%# Below is a search bar & button on the nav bar if we think we need/like the extra functionality %>
 
@@ -29,3 +44,4 @@
     </form> %>
   </div>
 </nav>
+</div>
