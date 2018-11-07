@@ -1,11 +1,25 @@
 .foobar {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    background: #f4f5f2;
+    background: #79A465;
+    color: white;
     padding-top: 20px;
 }
 
 .how-it-works {
     margin-left: 20px;
+
+
 }
+
+.how-it-works li {
+    list-style-type: none;
+
+}
+
+.legal li {
+    list-style-type: none;
+
+}
+
 

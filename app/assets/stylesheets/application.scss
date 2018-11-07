@@ -15,49 +15,26 @@ body {
     "footer-area" ;
     font-family: "Montserrat", sans-serif;
 }
+
 .nav {
     grid-area: nav-area;
     height: 56px + 20px;
-}
-<<<<<<< HEAD
-
- #stripe-form {
-    //  border: 1px solid black;
-    width: 350px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 64%;
-    background-color: #f4f5f2; /* Black */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    margin-top: 150px;
-    padding:20px  ;      
- }
-
- .show-main {
-    margin-left: 20px; /* Same width as the sidebar left position in px */
-    padding:20px
- }    
-
-
-.show-main {
-    margin-left: 20px; /* Same width as the sidebar + left position in px */
-    font-size: 28px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
-    right: 34%;
-    width: 650px;
+    background-color:#9ABC3D;
+    color: white;
 }
 
-=======
->>>>>>> 82f6a2e267c282c3a70f62536fc5ba58f16f2af1
 .yield {
     grid-area: yield-area;
     background: white;
 }
+
 .footer {
     grid-area: footer-area;
     margin-top: 20px; 
+    background-color:#79A465;
 }
+
+
 
 //  #stripe-form {
 //     //  border: 1px solid black;
