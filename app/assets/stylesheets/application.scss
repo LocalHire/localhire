@@ -17,9 +17,8 @@ body {
 }
 .nav {
     grid-area: nav-area;
-    height: 56px + 20px;
+    height: 56px;
 }
-<<<<<<< HEAD
 
  #stripe-form {
     //  border: 1px solid black;
@@ -48,8 +47,6 @@ body {
     width: 650px;
 }
 
-=======
->>>>>>> 82f6a2e267c282c3a70f62536fc5ba58f16f2af1
 .yield {
     grid-area: yield-area;
     background: white;

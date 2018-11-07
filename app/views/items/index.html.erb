@@ -1,60 +1,59 @@
 <div class="container all-items-page">
-<div class="all-of-the-items">
+  <div class="all-of-the-items">
 
-<div class="info-text">
-  <h3>Showing all items</h3>
-</div>
+    <div class="info-text">
+      <h3>Showing all items</h3>
+    </div>
 
-<div class="buttons">
-  <% if user_signed_in? %>  
-    <%=link_to 'Add New Item', new_item_path, class: 'btn btn-outline-success index-links' %> 
-    <%=link_to "Search Items", new_search_path, class: 'btn btn-outline-primary index-links'%>
-  <% else %>
-    <%=link_to "Search Items", new_search_path, class: 'btn btn-outline-primary index-links'%>
-  <% end %> 
-</div>
+    <div class="buttons">
+      <% if user_signed_in? %>  
+        <%=link_to 'Add New Item', new_item_path, class: 'btn btn-outline-success index-links' %> 
+        <%=link_to "Search Items", new_search_path, class: 'btn btn-outline-primary index-links'%>
+      <% else %>
+        <%=link_to "Search Items", new_search_path, class: 'btn btn-outline-primary index-links'%>
+      <% end %> 
+    </div>
 
-  <p id="notice"><%= notice %></p>
-
-
-  <div class="all-items">
+    <p id="notice"><%= notice %></p>
 
 
-    <% @items.each do |item| %>
-      <%# <div class="card-margin col-sm-3"> %>
-        <div class="card">
+    <div class="all-items">
 
-          <% item.images.each_with_index do |image, i| %>
-            <% if i == 0 %>
-              <%= image_tag image, class: "card-img-top img-size" %>
-            <%end%>
-          <% end %>
+      <% @items.each do |item| %>
+        <%# <div class="card-margin col-sm-3"> %>
+          <div class="card">
 
-          <div class="card-body">
-            <h4 class="card-title"><%= item.name %></h4><br>
-            
-            <p class="card-text">
-              <%= item.description %><br>
-              <%= item.price_per_hour %><br>
-              <%= item.price_per_day %><br>
-            </p>
+            <% item.images.each_with_index do |image, i| %>
+              <% if i == 0 %>
+                <%= image_tag image, class: "card-img-top img-size" %>
+              <%end%>
+            <% end %>
 
-            <div>
-              <%= link_to 'More', item, class: 'btn btn-outline-success' %>
+            <div class="card-body">
+              <h4 class="card-title"><%= item.name %></h4><br>
               
-              <% if user_signed_in? %>
-                <% if current_user.id == item.lender_id %>
-                  <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-outline-primary' %>
-                  <%= link_to 'Delete', item, class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <p class="card-text">
+                <%= item.description %><br>
+                <%= item.price_per_hour %><br>
+                <%= item.price_per_day %><br>
+              </p>
+
+              <div>
+                <%= link_to 'More', item, class: 'btn btn-outline-success' %>
+                
+                <% if user_signed_in? %>
+                  <% if current_user.id == item.lender_id %>
+                    <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-outline-primary' %>
+                    <%= link_to 'Delete', item, class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <% end %>
                 <% end %>
-              <% end %>
-              <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
-        </div>
-       </div>
-    <% end %> 
-  </div> 
+        <!--</div> -->
+      <% end %> 
+    </div> 
   </div>  
 </div>
 
