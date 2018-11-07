@@ -28,6 +28,8 @@
 <!--   THIS IS WHERE THE SIDEBAR - BOOKING AND STRIPE PAYMENT HTML/ERB IS -->
   <div class="show-item-sidebar">
     <%= form_tag charges_path, id: 'stripe-form' do %>
+      
+      <!-- THIS IS THE LOCATION STUFF -->
       <div class="location-available">
         </p>
         This item is located in <%= @item.suburb %>
@@ -37,6 +39,8 @@
       
       <label for="price">You can book this <%= @item.name %> for:</label>
       <br>
+
+      <!-- THIS IS THE INFO BOX DISPLAY DURATION OPTIONS -->
       <div class="display-lender-hire-options">
         <label for="lender-select-duration"> </label>
           
@@ -56,6 +60,7 @@
       </div>
 
     <br>
+    <!-- THIS IS THE DROP DOWN AREA-->
       <select id="durationForHire" name="duration_for_hire">
         <option selected="selected">Select which timeframe suits you</option>
         
@@ -90,6 +95,8 @@
 
       <label id="durationLabel" for="duration"></label> <!-- I removed the following between the label tags, but we can put it back if preferred - How long would you like to borrow this item for? -->
       <br>
+
+      <!-- RANGE SLIDER  -->
       <div class="slidecontainer">
         <input type="range" name="duration" id="durationInput" value="1" min="1" max="23" value="50" class="slider" oninput="durationOutput.value = durationInput.value" >
         <output id="durationTimeframe" name="durationOutput" id="durationOutputId">1<%= %></output>
@@ -103,7 +110,6 @@
         <% end %>
       </article>
 
-
       <p>
         <strong>Total Booking Cost: $</strong>
         <span id="total"></span>
@@ -112,7 +118,7 @@
       <input type="hidden" id="stripeEmail" name="stripeEmail">
       <input type="hidden" name="item_id" value="<%= @item.id %>">
 
-      <button id="pay">Make a Booking </button>
+      <button id="pay">Make a Request</button>
 
     <% end %>
   </div>

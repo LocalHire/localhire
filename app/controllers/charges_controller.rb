@@ -19,7 +19,6 @@ class ChargesController < ApplicationController
       @total = @item.price_per_week * duration
     end
 
-  
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
       :source  => params[:stripeToken]

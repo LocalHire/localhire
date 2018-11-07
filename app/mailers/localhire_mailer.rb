@@ -9,7 +9,7 @@ class LocalhireMailer < ApplicationMailer
     def new_booking_user
 
         @user = params[:user]
-        @item = params[:item] 
+        @item = params[:item]
         mail(to: @user.email, subject: 'New Booking Made!')
     end
 

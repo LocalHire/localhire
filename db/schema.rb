@@ -15,6 +15,26 @@ ActiveRecord::Schema.define(version: 2018_11_06_211638) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "accounts", force: :cascade do |t|
+    t.integer "account_number"
+    t.bigint "user_id"
+    t.bigint "borrower_id"
+    t.bigint "lender_id"
+    t.bigint "schedule_id"
+    t.bigint "item_id"
+    t.bigint "booking_id"
+    t.bigint "item_payment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_accounts_on_booking_id"
+    t.index ["borrower_id"], name: "index_accounts_on_borrower_id"
+    t.index ["item_id"], name: "index_accounts_on_item_id"
+    t.index ["item_payment_id"], name: "index_accounts_on_item_payment_id"
+    t.index ["lender_id"], name: "index_accounts_on_lender_id"
+    t.index ["schedule_id"], name: "index_accounts_on_schedule_id"
+    t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -44,8 +64,19 @@ ActiveRecord::Schema.define(version: 2018_11_06_211638) do
     t.bigint "lender_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
+    t.integer "cost"
+    t.datetime "start"
+    t.text "cancellation_reason"
+    t.boolean "refunded"
+    t.bigint "schedule_id"
+    t.bigint "borrower_id"
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_bookings_on_account_id"
+    t.index ["borrower_id"], name: "index_bookings_on_borrower_id"
     t.index ["item_id"], name: "index_bookings_on_item_id"
     t.index ["lender_id"], name: "index_bookings_on_lender_id"
+    t.index ["schedule_id"], name: "index_bookings_on_schedule_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -73,6 +104,8 @@ ActiveRecord::Schema.define(version: 2018_11_06_211638) do
     t.string "per_day_availability"
     t.string "per_week_availability"
     t.bigint "lender_id"
+    t.bigint "account_id"
+    t.bigint "user_id"
     t.integer "views", default: 0
     t.string "street"
     t.string "city"
@@ -81,15 +114,20 @@ ActiveRecord::Schema.define(version: 2018_11_06_211638) do
     t.float "latitude"
     t.float "longitude"
     t.string "suburb"
+    t.index ["account_id"], name: "index_items_on_account_id"
     t.index ["lender_id"], name: "index_items_on_lender_id"
-    t.index ["users_id"], name: "index_items_on_users_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "lenders", force: :cascade do |t|
-    t.integer "phone"
+    t.string "phone"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "account_id"
+    t.bigint "item_id"
+    t.index ["account_id"], name: "index_lenders_on_account_id"
+    t.index ["item_id"], name: "index_lenders_on_item_id"
     t.index ["user_id"], name: "index_lenders_on_user_id"
   end
 
@@ -129,13 +167,41 @@ ActiveRecord::Schema.define(version: 2018_11_06_211638) do
     t.string "phone"
     t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["lender_id"], name: "index_users_on_lender_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accounts", "bookings"
+  add_foreign_key "accounts", "borrowers"
+  add_foreign_key "accounts", "item_payments"
+  add_foreign_key "accounts", "items"
+  add_foreign_key "accounts", "lenders"
+  add_foreign_key "accounts", "schedules"
+  add_foreign_key "accounts", "users"
+  add_foreign_key "bookings", "accounts"
+  add_foreign_key "bookings", "borrowers"
   add_foreign_key "bookings", "items"
   add_foreign_key "bookings", "lenders"
+  add_foreign_key "bookings", "schedules"
   add_foreign_key "bookings", "users"
+  add_foreign_key "borrowers", "accounts"
+  add_foreign_key "borrowers", "users"
+  add_foreign_key "item_payments", "accounts"
+  add_foreign_key "item_payments", "bookings"
+  add_foreign_key "items", "accounts"
   add_foreign_key "items", "lenders"
+<<<<<<< HEAD
   add_foreign_key "items", "users", column: "users_id"
+=======
+  add_foreign_key "items", "users"
+  add_foreign_key "lenders", "accounts"
+  add_foreign_key "lenders", "items"
+>>>>>>> 82f6a2e267c282c3a70f62536fc5ba58f16f2af1
   add_foreign_key "lenders", "users"
+  add_foreign_key "schedules", "accounts"
+  add_foreign_key "schedules", "items"
+  add_foreign_key "schedules", "lenders"
+  add_foreign_key "users", "accounts"
+  add_foreign_key "users", "borrowers"
+  add_foreign_key "users", "lenders"
 end
