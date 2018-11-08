@@ -17,8 +17,12 @@
 #showing-all-items {
     display: inline-block;
 }
+#showing-all-items a {
+    margin: 30px;
+}
 .buttons {
     float: right;
+    margin-left: 25px;
 }
 .item-card {
     grid-area: item-card;
@@ -51,10 +55,9 @@
 .card-text {
     overflow: hidden;
     position: relative;
-    height: 4.2em; /* exactly three lines */
+    height: 4.2em; 
 }
 .card-text:after {
-// content: "";
     text-align: right;
     position: absolute;
     bottom: 0;
@@ -66,7 +69,6 @@
 h4.c-title {
     margin-bottom: 0px;
 }
-
 /*Image Carousal styles*/
 * {box-sizing:border-box}
 /* Slideshow container */

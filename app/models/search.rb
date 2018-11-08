@@ -6,15 +6,11 @@ class Search < ApplicationRecord
     private
 
         def find_items
-            
-        
             items = Item.all
-
-            results  = Geocoder.search("#{suburb},VIC,Australia")
+            results  = Geocoder.search("#{suburb},VIC,Australia") #will have to make this more than VIC
             location = results.first.coordinates
 
             if suburb.present? && arearange.present?
-                # items = Item.near(suburb, range)
                 items = Item.near(location, arearange, units: :km)               
             end
 
@@ -78,8 +74,7 @@ class Search < ApplicationRecord
                 items = items.where("max_weeks_per_hire >= ?", duration) if duration.present?
                 items = items.where("price_per_week >= ?", minprice) if minprice.present?
                 items = items.where("price_per_week <= ?", maxprice) if maxprice.present?
-            end      
-    
+            end   
             items
         end
 end

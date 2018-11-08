@@ -20,32 +20,33 @@
       <%= form.text_field :name %>
     </div>
 
-    <div class="field ">
-      <%= form.label :description %>
-      <%= form.text_area :description %>
-    </div>
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </div>
 
-    <div class="field">
-      <%= form.label :instructions %>
-      <%= form.text_area :instructions %>
-    </div>
+      <div class="field ">
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+      </div>
 
-    <div class="field">
-      <%= form.label :image %>
-      <%= form.file_field :images, multiple: true %>
-    </div>
+      <div class="field">
+        <%= form.label :instructions %>
+        <%= form.text_area :instructions %>
+      </div>
 
    
   </div>
 
 
   <div id="availability-form">
-  <h2>Availability</h2>
+    <h2>Availability</h2>
 
     <div class="field">
       <%= form.label(:per_hour_availability, "Per hour availability") %>
       <%= form.check_box(:per_hour_availability, id: "price-per-hour") %>
     </div>
+    
     <div id="price-per-hour-details" class="hidden" style="display:none;">
       <div class="field ">
         <%= form.label :price_per_hour %>
@@ -61,6 +62,7 @@
       <%= form.label(:per_day_availability, "Per day availability") %>
       <%= form.check_box(:per_day_availability, id: "price-per-day") %>
     </div>
+
     <div id="price-per-day-details" class="hidden" style="display:none;">
       <div class="field">
         <%= form.label :price_per_day %>
@@ -76,6 +78,7 @@
         <%= form.label(:per_week_availability, "Per week availability") %>
         <%= form.check_box(:per_week_availability, id: "price-per-week") %>
     </div>
+
     <div id="price-per-week-details" class="hidden" style="display:none;">
       <div class="field ">
         <%= form.label :price_per_week %>
@@ -107,14 +110,14 @@
         <%= form.text_field :state %>
       </div>
 
-      <div class="field">
-        <%= form.label :postcode %>
-        <%= form.text_field :postcode%>
-      </div>
-     
-      <div class="actions">
-        <%= form.submit %>
-      </div>
+    <div class="field">
+      <%= form.label :postcode %>
+      <%= form.text_field :postcode%>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
 
       <p id="location-fine-print">We will not post this information on the item show page, just the suburb.  However, the street address is required for when someone makes a successful booking</p>
   </div>
@@ -122,10 +125,6 @@
    
     <%= link_to 'Back', items_path %>
   </div>
-
-
-
-
 </div>
 <% end %>
 

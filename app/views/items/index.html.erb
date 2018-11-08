@@ -1,18 +1,14 @@
 <div class="all-items-page">
 <div class="all-of-the-items">
 
-  <%# <div class="info-text"> %>
     <h3 id="showing-all-items">Showing all items</h3>
-  <%# </div> %>
-
-  <%# <div class="buttons"> %>
+ 
     <% if user_signed_in? %>  
-      <%=link_to 'Add New Item', new_item_path, class: 'buttons btn btn-outline-success' %> <!-- btn btn-outline-success index-links -->
+      <%=link_to 'Add New Item', new_item_path, class: 'buttons btn btn-outline-success' %> 
       <%=link_to "Search Items", new_search_path, class: 'buttons btn btn-outline-primary'%>
     <% else %>
       <%=link_to "Search Items", new_search_path, class: 'buttons btn btn-outline-primary'%>
     <% end %>  
-  <%# </div> %>
 
   <hr>
 </div>
@@ -40,20 +36,17 @@
           <div class="manage-buttons">
             
             <% if user_signed_in? %>
-              <% if current_user == item.user%> <!-- may have to change to current_user.lender.id to get this to work-->
-                <%= link_to 'Edit', edit_item_path(item), class: 'edit-button btn btn-outline-primary' %>
+              <% if current_user == item.user%> 
+              <%= link_to 'Edit', edit_item_path(item), class: 'edit-button btn btn-outline-primary' %>
                 <%= link_to 'Delete', item, class: 'delete-button btn btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
               <% end %>
                 <%= link_to 'Details', (item), class: 'details-button btn btn-outline-success' %>
-             
-
             <% end %>
-          </div>
-        
+          </div>    
       </div>   
       </div>
     </div>
   <% end %> 
 </div>
-
+</div>
 

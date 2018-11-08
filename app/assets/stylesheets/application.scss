@@ -24,19 +24,41 @@ body {
     grid-area: nav-area;
     background-color: #EDEDED;
     height: 56px + 20px;
+    background-color:#9ABC3D;
+    color: white;
+    height: 56px;
 }
-
+ #stripe-form {
+    width: 350px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 64%;
+    background-color: #f4f5f2; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    margin-top: 150px;
+    padding:20px  ;      
+ }
+ .show-main {
+    margin-left: 20px; /* Same width as the sidebar left position in px */
+    padding:20px
+ }    
+.show-main {
+    margin-left: 20px; /* Same width as the sidebar + left position in px */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+    right: 34%;
+    width: 650px;
+}
 .yield {
     grid-area: yield-area;
     background: white;
-    margin-top: 96px;
-    
+    margin-top: 96px; 
 }
 .footer {
     grid-area: footer-area;
     margin-top: 50px; 
 }
-
 .search-form {
     color: gray;
 }
@@ -46,7 +68,6 @@ body {
     padding: 18px;
     font-family: 'Permanent Marker', cursive;
 }
-
 .nav-link {
     color: #79A465;
 }
