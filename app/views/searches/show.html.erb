@@ -1,7 +1,9 @@
 <div class="all-items-page">
 <div class="all-of-the-items">
   <div class="info-text">
+
     <h3 id="showing-all-items">Search Results</h3>
+  
   </div>
   <%# <div class="buttons"> %>
     <% if user_signed_in? %>  
@@ -11,7 +13,7 @@
       <%=link_to "Search Items", new_search_path, class: 'buttons btn btn-outline-primary'%>
     <% end %>  
   <%# </div> %>
- <!-- <hr> -->
+ <hr> 
 </div>
 <p id="notice"><%= notice %></p>
 <div class="all-items">
@@ -45,6 +47,7 @@
       </div>
     </div>
   <% end %> 
+</div>
 </div>
 <!--
   
