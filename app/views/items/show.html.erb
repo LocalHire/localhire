@@ -2,6 +2,25 @@
   <div class="show-main">
     <p id="notice"><%= notice %></p>
 
+      <!-- IMAGE CAROUSAL-->
+    <div class="slideshow-container">
+      <%(0...@item.images.count).each_with_index do |image, i|%>
+        <div class="mySlides">
+          <%=image_tag @item.images[image], class: "images",width: '200', height: '200'%>
+        </div>
+      <% end %>
+      <!-- Next and previous buttons -->
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+      <%(0...@item.images.count).each_with_index do |image, i|%>   
+        <span class="dot" onclick="currentSlide(i)"></span>    
+      <% end %>
+    </div>
+    <!--IMAGE CAROUSAL END -->
     <p>
       <strong>Name:</strong>
       <%= @item.name %>
@@ -16,14 +35,27 @@
       <strong>Instructions:</strong>
       <%= @item.instructions %>
     </p>
-
+<!--
     <p class="image-block-show-page">
       <%(0...@item.images.count).each do |image|%>
         <%=image_tag @item.images[image], width: '200', height: '200'%>
       <%end%>
     </p>
-    <%= link_to 'Back', items_path %>
+-->
+
+
+
+
+
+
+
+  <div class="link">
+    <%= link_to 'Back to all items', items_path, class: 'btn btn-outline-success' %>
   </div>
+
+</div>
+
+
 
 <!--   THIS IS WHERE THE SIDEBAR - BOOKING AND STRIPE PAYMENT HTML/ERB IS -->
   <div class="show-item-sidebar">
@@ -32,7 +64,7 @@
       <!-- THIS IS THE LOCATION STUFF -->
       <div class="location-available">
         </p>
-        This item is located in <%= @item.suburb %>
+          Located in <%= @item.suburb %>.
         </p>
 
       </div>
@@ -118,7 +150,7 @@
       <input type="hidden" id="stripeEmail" name="stripeEmail">
       <input type="hidden" name="item_id" value="<%= @item.id %>">
 
-      <button id="pay">Make a Request</button>
+      <button id="pay">Book Item</button>
 
     <% end %>
   </div>
@@ -144,53 +176,6 @@
     durationPrice = durationForHire.options[durationForHire.selectedIndex].dataset.price
     totalText.innerText = durationPrice * event.target.value
   }
-
-//  function updateTime(event) {
-//    var durationTime = durationForHire.options[durationForHire.selectedIndex].value
-
-      // var durationTime = event.target.value
-      // durationMax = event.target.options[event.target.selectedIndex].dataset.max
-      // durationPrice = event.target.options[event.target.selectedIndex].dataset.price
-      // var label = ""
-
-      // this stops the input from going over the maximum
-      // durationInput.max = durationMax
-
-      // this shows the total for the selected time and hours
-      // totalText.innerText = durationPrice *  durationInput.value
-
-      // this shows the user how long they can borrow an item based on the information that a lender has defined when creating or editing a product
-      
-      
-      
-      // switch (durationTime) {
-      //   case "week":
-      //     label = "weeks.";
-      //     break
-      //   case "day":
-      //     label = "days.";
-      //     break
-      //   case "hour":
-      //     label = "hours.";
-      //     break
-      //   default:
-      //     label = "?";
-      // }
-
-
-   
-  //   durationTime.innerText = label
-  // }
-
-
-
-
-
-
-
-
-
-
 
   function updateForm(event) {
       var durationChoice = event.target.value
@@ -253,4 +238,34 @@ $(window).on('popstate', function() {
   handler.close();
 });
 
+// This is for the image slider
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1} 
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none"; 
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block"; 
+  dots[slideIndex-1].className += " active";
+}
+// End slideshow
 </script>

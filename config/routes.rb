@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   root 'searches#new'
 
-  # get 'dashboard/index', to: 'dashboard#index'
-
-  get '/dashboard', to: 'dashboard#index', as: 'dashboard'
+  get '/dashboard/:id' => 'users#show', as: 'dashboard' 
+  # resources :users, only: [:show]
+  # get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   # get 'dashboardkn/index', to: 'dashboard#index'
   # get 'dashboard/index', to: 'dashboard#index'
 

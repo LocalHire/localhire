@@ -1,6 +1,6 @@
-<div class="search-form-page">
+<div class="search-form-page" background="tyler-callahan-662099-unsplash.jpg">
 <div class="search-form">
-    <h2>Hello! What Are You Looking For?</h2>
+    <h2>HEY THERE! WHAT CAN WE HELP YOU FIND TODAY?</h2>
     
     
         <%= form_for @search do |f|%>
@@ -23,8 +23,8 @@
 
              <div class="form-group">
                 <%= f.label :min_price, "Price Range",  :class => "search-label"%>
-                <%= f.text_field :minprice, size: 19%> - 
-                <%= f.text_field :maxprice, size: 19%><br/>
+                <%= f.text_field :minprice, size: 10%> - 
+                <%= f.text_field :maxprice, size: 10%><br/>
             </div> 
 
             <div class="form-group">
@@ -33,7 +33,7 @@
             </div> 
 
             <div class="form-group">
-                <%= f.label :arearange, :class => "search-label" %>
+                <%= f.label :arearange, "Area Range", :class => "search-label" %>
                 <%= f.number_field :arearange, :class => "search-input"%><br/>
             </div> 
             
@@ -46,7 +46,7 @@
     
 
     <div class="btn allitems-button">
-        <p><%=link_to "Show me All Items", items_path,  :class => "link"%></p>
+        <p><%=link_to "Show all items", items_path,  :class => "link"%></p>
     </div>
     </div>
 </div>

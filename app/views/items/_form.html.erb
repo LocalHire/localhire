@@ -1,6 +1,6 @@
 <div id="item-form">
   <div id="item-descripton">
-  <h2>Create a new Item to lend</h2>
+  <h2>Create new item for loan</h2>
   <%= form_with(model: item, local: true) do |form| %>
     <% if item.errors.any? %>
       <div id="error_explanation">
@@ -89,7 +89,7 @@
 
   <div id="location-form">
 
-      <h2> This is <strong>Local</strong>Hire so we need to know where you will be lending your item from?</h2>
+      <h2> To keep it local, please let us know where your item is to be picked up from. </h2>
         
       <div class="field">
         <%= form.label :street %>
@@ -100,11 +100,6 @@
         <%= form.label :suburb %>
         <%= form.text_field :suburb %>
       </div>
-
-      <%# <div class="field"> %>
-        <%# <%= form.label :city %> 
-        <%# <%= form.text_field :city%> 
-      <%# </div> %> 
 
       <div class="field">
         <%= form.label :state %>
@@ -120,8 +115,6 @@
         <%= form.submit %>
       </div>
 
-     
-      
       <p id="location-fine-print">We will not post this information on the item show page, just the suburb.  However, the street address is required for when someone makes a successful booking</p>
   </div>
 <% end %>

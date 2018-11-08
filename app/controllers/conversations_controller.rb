@@ -1,6 +1,10 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
 
+
+  # before_action :set_conversation, only: [:show, :create, :index]
+
+
   def index
     @users = User.all 
     @conversations = Conversation.all
@@ -14,10 +18,16 @@ class ConversationsController < ApplicationController
     end
     
     redirect_to conversation_messages_path(@conversation)
-
   end
 
+  # def show
+  # end
+
   private
+
+  # def set_conversation
+    # @conversation= Conversation.find(params[:id])
+  # end
 
   def conversation_params
     params.permit(:sender_id, :recipient_id)

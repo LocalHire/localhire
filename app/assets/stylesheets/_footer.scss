@@ -3,9 +3,45 @@
     grid-template-columns: 1fr 1fr 1fr;
     background:#f4f5f2;
     padding-top: 20px;
+    background-image: image-url("grass.jpg"); 
+    background-size: 100%;
+    background-position: center;
+    margin-top: 0px;
+    color: gray;
+    padding-top: 20px;
+    align-items: top;
+    ul {
+        padding-left: 0px;
+    }
 }
-
 .how-it-works {
     margin-left: 20px;
+    font-size: 13px;
+    // justify-self: left;
+}
+.how-it-works li {
+    list-style-type: none;
+}
+.how-it-works a {
+    color: #79A465;
+
+}
+.legal li {
+    list-style-type: none;
+    justify-self: right;
+    
+}
+.legal a {
+    color: #79A465;  
+    font-size: 13px;   
 }
 
+.contact-us {
+    // justify-self: right;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+.copyright {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

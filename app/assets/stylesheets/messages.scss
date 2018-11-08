@@ -1,3 +1,28 @@
+// <div class="messages-page">
+
+// <div class="previous-messages">
+
+
 .messages-page {
-    background: red;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "previous-messages"
+    "new-messages" ;
+}
+.previous-messages{
+    grid-area: previous-messages;
+    background: #f4f5f2;
+    width: 480px;
+    align-items: center;
+}
+.message-item {
+    grid-area: new-messages;
+    word-wrap: break-word;
+}
+.message-text-area {
+    padding: 30px;
+}
+.message-header {
+    margin: 20px;
 }

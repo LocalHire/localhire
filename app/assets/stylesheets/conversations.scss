@@ -1,0 +1,28 @@
+.conversations-page {
+    display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+        "conversations all-users" ;
+}
+.conversation-list {
+    grid-area: conversations;
+    list-style-type: none;
+    padding: 10px 20px;
+    margin: 10px auto;
+    border-radius: 3px;
+}
+.all-users-list {
+    grid-area: all-users;
+        display: block;
+        padding: 10px 20px;
+        margin: 10px auto;
+        border-radius: 3px;
+        width: 100%;
+}
+
+.user-name {
+    display: inline-block;
+}
+.message-me-button {
+    float: right;
+}
