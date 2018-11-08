@@ -16,7 +16,7 @@ class LocalhireMailer < ApplicationMailer
         @user = params[:user]
         @item = params[:item]
         @lender = @item.lender.user
-        mail(to: @lender.user.email, subject: 'Your Item is Booked!')
+        mail(to: @lender.email, subject: 'Your Item is Booked!')
     end
 end
 
