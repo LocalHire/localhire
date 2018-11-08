@@ -1,7 +1,8 @@
+  <%= form_with(model: item, local: true) do |form| %>
+
 <div id="item-form">
   <div id="item-descripton">
   <h2>Create new item for loan</h2>
-  <%= form_with(model: item, local: true) do |form| %>
     <% if item.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -117,7 +118,6 @@
 
       <p id="location-fine-print">We will not post this information on the item show page, just the suburb.  However, the street address is required for when someone makes a successful booking</p>
   </div>
-<% end %>
   <div id="back">
    
     <%= link_to 'Back', items_path %>
@@ -127,6 +127,7 @@
 
 
 </div>
+<% end %>
 
 <script>
  // Find every checkbox
