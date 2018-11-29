@@ -21,20 +21,22 @@
       <% end %>
     </div>
     <!--IMAGE CAROUSAL END -->
-    <p>
-      <strong>Name:</strong>
-      <%= @item.name %>
-    </p>
+    <div div="show-text-area">
+      <p class="show-text">
+        <strong>Name:</strong>
+        <%= @item.name %>
+      </p>
 
-    <p>
-      <strong>Description:</strong>
-      <%= @item.description %>
-    </p>
+      <p class="show-text">
+        <strong>Description:</strong>
+        <%= @item.description %>
+      </p>
 
-    <p>
-      <strong>Instructions:</strong>
-      <%= @item.instructions %>
-    </p>
+      <p class="show-text">
+        <strong>Instructions:</strong>
+        <%= @item.instructions %>
+      </p>
+    </div>
 <!--
     <p class="image-block-show-page">
       <%(0...@item.images.count).each do |image|%>

@@ -33,16 +33,16 @@
           <%# <%= item.price_per_day %>
         </p>
         
-          <div class="manage-buttons">
-            
+          <div class="manage-buttons">            
             <% if user_signed_in? %>
               <% if current_user == item.user%> 
-              <%= link_to 'Edit', edit_item_path(item), class: 'edit-button btn btn-outline-primary' %>
-                <%= link_to 'Delete', item, class: 'delete-button btn btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <%= link_to 'Edit', edit_item_path(item), class: 'edit-button btn btn-outline-primary' %>
+                  <%= link_to 'Delete', item, class: 'delete-button btn btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
               <% end %>
-                <%= link_to 'Details', (item), class: 'details-button btn btn-outline-success' %>
             <% end %>
-          </div>    
+            <%= link_to 'Details', (item), class: 'details-button btn btn-outline-success' %>
+            
+          </div>  
       </div>   
       </div>
     </div>
