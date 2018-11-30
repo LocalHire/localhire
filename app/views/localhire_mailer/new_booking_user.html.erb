@@ -13,9 +13,19 @@
     <ul>
       <li><strong>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> <%= @item.name %></li>
       <li><strong>Description&nbsp;:</strong> <%= @item.description %></li>
-      <li><strong>Hour-Plan&nbsp;&nbsp;&nbsp;:</strong> <%= @item.price_per_hour%>$/hour with maximum <%= @item.max_hours_per_hire%>hours/hire</li>
-      <li><strong>Day-Plan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> <%= @item.price_per_day%>$/day with maximum <%= @item.max_days_per_hire%>days/hire</li>
-      <li><strong>Week-Plan&nbsp;&nbsp;&nbsp;:</strong> <%= @item.price_per_week%>$/week with maximum <%= @item.max_weeks_per_hire%>weeks/hire</li>
+      
+      <% if @item.price_per_hour != nil %>
+        <li><strong>Hour-Plan&nbsp;&nbsp;&nbsp;:</strong> <%= @item.price_per_hour%>$/hour with maximum <%= @item.max_hours_per_hire%>hours/hire</li>
+      <% end %>
+
+      <% if @item.price_per_day != nil %>
+        <li><strong>Day-Plan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> <%= @item.price_per_day%>$/day with maximum <%= @item.max_days_per_hire%>days/hire</li>
+      <% end %>
+
+      <% if @item.price_per_week != nil %>
+        <li><strong>Week-Plan&nbsp;&nbsp;&nbsp;:</strong> <%= @item.price_per_week%>$/week with maximum <%= @item.max_weeks_per_hire%>weeks/hire</li>
+      <% end %>
+      
       <li><strong>Location&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> <%= @item.suburb %></li>
     </ul>
     

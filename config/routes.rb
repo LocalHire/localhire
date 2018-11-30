@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'legal/privacy', to: 'legal#privacy'
   get 'legal/cookiepolicy', to: 'legal#cookiepolicy'
 
+ 
   resources :lenders, :borrowers, :searches, :charges
   resources :bookings #, only:[:index]
 

@@ -1,6 +1,7 @@
 class ChargesController < ApplicationController
  
 
+
   def create
     @item = Item.find(params[:item_id]) 
 
@@ -32,8 +33,8 @@ class ChargesController < ApplicationController
     ) 
 
     
-    # LocalhireMailer.with(user: current_user, item: @item).new_booking_user.deliver_now
-    # LocalhireMailer.with(user: current_user, item: @item).new_booking_lender.deliver_now
+    LocalhireMailer.with(user: current_user, item: @item).new_booking_user.deliver_now
+    LocalhireMailer.with(user: current_user, item: @item).new_booking_lender.deliver_now
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

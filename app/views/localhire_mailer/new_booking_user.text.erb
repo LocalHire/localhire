@@ -4,14 +4,24 @@
 An Item that belongs to you is booked! 
 --------------------------------------
       
-The details of your items are as below:
+The details of your item are as below:
 
 
       Name:       <%= @item.name %>
       Description:<%= @item.description %>
-      Hour-Plan:  <%= @item.price_per_hour%>$/hour with maximum <%= @item.max_hours_per_hire%>hours/hire
-      Day-Plan:   <%= @item.price_per_day%>$/day with maximum <%= @item.max_days_per_hire%>days/hire
-      Week-Plan:  <%= @item.price_per_week%>$/week with maximum <%= @item.max_weeks_per_hire%>weeks/hire
+      
+      <% if @item.price_per_hour != nil %>
+            Hour-Plan:  <%= @item.price_per_hour%>$/hour with maximum <%= @item.max_hours_per_hire%>hours/hire
+      <% end %>
+
+      <% if @item.price_per_day != nil %>
+            Day-Plan:   <%= @item.price_per_day%>$/day with maximum <%= @item.max_days_per_hire%>days/hire
+      <% end %>
+
+      <% if @item.price_per_week != nil %>
+            Week-Plan:  <%= @item.price_per_week%>$/week with maximum <%= @item.max_weeks_per_hire%>weeks/hire
+      <% end %>
+      
       Location:   <%= @item.suburb %>
 
 

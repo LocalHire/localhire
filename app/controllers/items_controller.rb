@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
     
     respond_to do |format|
       if @item.save
-        # LocalhireMailer.with(user: current_user, item: @item).new_item.deliver_now
+        LocalhireMailer.with(user: current_user, item: @item).new_item.deliver_now
         format.html { redirect_to item_path(@item), notice: 'Item was successfully created.' }
         # format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }

@@ -82,10 +82,7 @@ ActiveRecord::Schema.define(version: 2018_11_06_211638) do
     t.float "longitude"
     t.string "suburb"
     t.index ["lender_id"], name: "index_items_on_lender_id"
-<<<<<<< HEAD
     t.index ["users_id"], name: "index_items_on_users_id"
-=======
->>>>>>> 6640e62ac84cf9507418ce5760b16d88a726fe36
   end
 
   create_table "lenders", force: :cascade do |t|
@@ -139,9 +136,6 @@ ActiveRecord::Schema.define(version: 2018_11_06_211638) do
   add_foreign_key "bookings", "lenders"
   add_foreign_key "bookings", "users"
   add_foreign_key "items", "lenders"
-<<<<<<< HEAD
   add_foreign_key "items", "users", column: "users_id"
-=======
->>>>>>> 6640e62ac84cf9507418ce5760b16d88a726fe36
   add_foreign_key "lenders", "users"
 end
